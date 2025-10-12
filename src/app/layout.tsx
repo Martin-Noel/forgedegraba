@@ -32,24 +32,24 @@ export default function RootLayout({
             </h1>
             <ul className="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
               <li>
-                <a href="#savoir-faire" className="hover:text-copper">
+                <Link href="#savoir-faire" className="hover:text-copper">
                   Savoir-faire
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#creations" className="hover:text-copper">
+                <Link href="#creations" className="hover:text-copper">
                   Créations
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#atelier" className="hover:text-copper">
+                <Link href="#atelier" className="hover:text-copper">
                   Atelier
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-copper">
+                <Link href="#contact" className="hover:text-copper">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

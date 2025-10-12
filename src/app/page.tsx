@@ -64,6 +64,7 @@ export default function HomePage() {
       <section
         id="savoir-faire"
         className="relative max-w-6xl mx-auto py-20 px-6 overflow-hidden"
+        style={{ scrollMarginTop: "60px" }}
       >
         {/* Poinçon filigrane */}
         <motion.div
@@ -82,16 +83,21 @@ export default function HomePage() {
           Le Savoir-Faire
         </h2>
         <p className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto">
-          Chaque création est le fruit d’un travail patient et précis. Le métal,
-          chauffé à blanc, est martelé, trempé, puis poli avec soin. Ce
-          savoir-faire ancestral s’allie à une approche moderne du design pour
-          donner naissance à des pièces uniques, empreintes de force et
-          d’élégance.
+          Bienvenue à la Forge de Graba, un lieu où la passion pour la
+          coutellerie rencontre l&apos;excellence artisanale.
+        </p>
+        <p className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto">
+          Située à Tursac, notre forge perpétue un savoir-faire traditionnel,
+          alliant techniques ancestrales et innovation contemporaine.
         </p>
       </section>
 
       {/* CRÉATIONS */}
-      <section id="creations" className="py-20 bg-[#141414]">
+      <section
+        id="creations"
+        className="py-20 bg-[#141414]"
+        style={{ scrollMarginTop: "60px" }}
+      >
         <h2 className="text-4xl font-cinzel text-center mb-10 text-copper">
           Les Créations
         </h2>
