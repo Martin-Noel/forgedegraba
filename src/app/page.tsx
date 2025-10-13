@@ -23,6 +23,7 @@ export default function HomePage() {
             y: useTransform(scrollY, [0, 500], [0, -50]),
           }}
         >
+          {/* TODO: descendre la photo : cf ancienne version du projet */}
           <Image
             src="/background/bg-main.jpg"
             alt="Forgeron à l'œuvre"

@@ -20,6 +20,10 @@ export default function RootLayout({
       <body className={`${inter.className} bg-neutral-950 text-white`}>
         <Header />
         <main>{children}</main>
+        <footer className="mt-20 py-10 text-center text-sm text-steel">
+          © {new Date().getFullYear()} La forge de{" "}
+          <span className="text-copper">Graba</span> — Tous droits réservés.
+        </footer>
       </body>
     </html>
   );
