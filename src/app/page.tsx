@@ -19,14 +19,16 @@ export default function HomePage() {
         {/* Background principal avec parallaxe */}
         <motion.div
           className="absolute inset-0"
-          style={{ y: useTransform(scrollY, [0, 500], [0, -50]) }}
+          style={{
+            y: useTransform(scrollY, [0, 500], [0, -50]),
+          }}
         >
           <Image
             src="/background/bg-main.jpg"
             alt="Forgeron à l'œuvre"
             fill
             priority
-            className="object-cover brightness-[0.6]"
+            className="object-cover brightness-[0.65]"
           />
         </motion.div>
 
@@ -68,7 +70,7 @@ export default function HomePage() {
       >
         {/* Poinçon filigrane */}
         <motion.div
-          className="absolute top-1/2 left-1/2 w-64 h-64 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
+          className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
           style={{ y: yStampSavoir }}
         >
           <Image
@@ -79,7 +81,7 @@ export default function HomePage() {
           />
         </motion.div>
 
-        <h2 className="text-4xl font-cinzel text-center mb-10 text-copper">
+        <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
           Le Savoir-Faire
         </h2>
         <p className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto">
@@ -98,7 +100,7 @@ export default function HomePage() {
         className="py-20 bg-[#141414]"
         style={{ scrollMarginTop: "60px" }}
       >
-        <h2 className="text-4xl font-cinzel text-center mb-10 text-copper">
+        <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
           Les Créations
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
@@ -125,7 +127,7 @@ export default function HomePage() {
       >
         {/* Poinçon filigrane */}
         <motion.div
-          className="absolute top-1/2 left-1/2 w-56 h-56 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
+          className="absolute top-1/2 left-1/2 w-72 h-72 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
           style={{ y: yStampContact }}
         >
           <Image
@@ -136,7 +138,7 @@ export default function HomePage() {
           />
         </motion.div>
 
-        <h2 className="text-4xl font-cinzel mb-10 text-copper">Contact</h2>
+        <h2 className="text-5xl font-cinzel mb-10 text-copper">Contact</h2>
         <p className="text-gray-300 mb-6">
           Pour toute demande de création sur mesure ou de collaboration,
           contactez-moi :
