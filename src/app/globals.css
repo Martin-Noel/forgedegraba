@@ -112,3 +112,30 @@ button {
   border-radius: 10px;
 }
 
+/* Carousel padding helpers to center first/last snap elements on small screens */
+@media (max-width: 639px) {
+  #creations-carousel {
+    padding-left: 2rem; /* 24px */
+    padding-right: 2rem;
+    scroll-padding-left: 1.5rem;
+    scroll-padding-right: 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .creation-card {
+    min-width: 72vw; /* card occupies most of viewport on mobile */
+  }
+}
+
+@media (min-width: 640px) {
+  .creation-card {
+    min-width: 0;
+  }
+  #creations-carousel {
+    padding-left: 0;
+    padding-right: 0;
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
+  }
+}
+

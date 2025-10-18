@@ -15,6 +15,97 @@ type Creation = {
   featured?: boolean;
 };
 import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useCallback } from "react";
+
+// Small accessible carousel controls (client-side)
+function CarouselControls({ selector }: { selector: string }) {
+  // Scroll to the nearest card index with clamping. This matches touch snapping.
+  const scrollToCard = useCallback(
+    (indexDir: number) => {
+      const container = document.querySelector(selector) as HTMLElement | null;
+      if (!container) return;
+
+      const cards = Array.from(
+        container.querySelectorAll<HTMLElement>(".creation-card")
+      );
+      if (cards.length === 0) return;
+
+      // compute centers relative to container scrollLeft
+      const centers = cards.map((card) => {
+        const rect = card.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        const center =
+          rect.left -
+          containerRect.left +
+          rect.width / 2 +
+          container.scrollLeft;
+        return center;
+      });
+
+      // find current center (viewport center of container)
+      const viewportCenter = container.scrollLeft + container.clientWidth / 2;
+
+      // find nearest index to current center
+      let nearest = 0;
+      let nearestDistance = Infinity;
+      centers.forEach((c, i) => {
+        const d = Math.abs(c - viewportCenter);
+        if (d < nearestDistance) {
+          nearestDistance = d;
+          nearest = i;
+        }
+      });
+
+      const targetIndex = Math.min(
+        Math.max(0, nearest + indexDir),
+        cards.length - 1
+      );
+      const targetCenter = centers[targetIndex];
+
+      // clamp scroll so we never overscroll beyond bounds
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const desiredScroll = Math.round(
+        targetCenter - container.clientWidth / 2
+      );
+      const clamped = Math.min(
+        Math.max(0, desiredScroll),
+        Math.max(0, maxScroll)
+      );
+
+      container.scrollTo({ left: clamped, behavior: "smooth" });
+    },
+    [selector]
+  );
+
+  // key navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") scrollToCard(-1);
+      else if (e.key === "ArrowRight") scrollToCard(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [scrollToCard]);
+
+  return (
+    <>
+      <button
+        aria-label="Précédent"
+        onClick={() => scrollToCard(-1)}
+        className="absolute left-4 top-1/2 -translate-y-1/2 sm:hidden bg-black/60 text-white p-3 rounded-full z-20"
+      >
+        ‹
+      </button>
+      <button
+        aria-label="Suivant"
+        onClick={() => scrollToCard(1)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 sm:hidden bg-black/60 text-white p-3 rounded-full z-20"
+      >
+        ›
+      </button>
+    </>
+  );
+}
 
 export default function HomePage() {
   const { scrollY } = useScroll();
@@ -140,13 +231,22 @@ export default function HomePage() {
           Les Créations
         </h2>
 
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="max-w-6xl mx-auto px-6 relative">
+          {/* Carousel container: mobile snap, grid on larger screens */}
+          <div
+            id="creations-carousel"
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none"
+            role="list"
+          >
             {(creations as Creation[])
               .filter((c: Creation) => c.featured)
               .slice(0, 3)
               .map((c) => (
-                <div key={c.id} className="creation-card block">
+                <div
+                  key={c.id}
+                  role="listitem"
+                  className="creation-card snap-center sm:snap-none block"
+                >
                   <div className="card-media">
                     <Image
                       src={c.image}
@@ -158,12 +258,14 @@ export default function HomePage() {
                   <div className="card-body">
                     <h3 className="creation-title font-cinzel">{c.title}</h3>
                     <p className="creation-meta">
-                      Lame {c.blade_length_cm}cm  Manche {c.handle_length_cm}cm
+                      Lame {c.blade_length_cm}cm Manche {c.handle_length_cm}cm
                     </p>
                   </div>
                 </div>
               ))}
           </div>
+
+          <CarouselControls selector="#creations-carousel" />
 
           <div className="text-center mt-8">
             <a href="/creations" className="btn-primary">
