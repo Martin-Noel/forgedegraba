@@ -45,3 +45,13 @@ button {
 .text-steel {
   color: var(--color-steel);
 }
+
+/* Stages page specific tweaks */
+.stages-cta {
+  display: inline-block;
+  background: var(--color-copper);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+

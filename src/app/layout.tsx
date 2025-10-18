@@ -1,9 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Header from "./header";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "La forge de graba",
@@ -17,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} bg-neutral-950 text-white`}>
+      <body className={`bg-neutral-950 text-white`}>
         <Header />
         <main>{children}</main>
         <footer className="mt-20 py-10 text-center text-sm text-steel">
