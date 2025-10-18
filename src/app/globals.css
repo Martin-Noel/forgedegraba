@@ -121,6 +121,16 @@ button {
   object-fit: contain;
 }
 
+/* Simple rotate 90deg for images, centered, no extra zoom */
+.rotated-90 {
+  transform: translate(-50%, -50%) rotate(90deg) !important;
+  transform-origin: center center !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
 .creation-card .card-body {
   padding: 1rem;
   display: flex;

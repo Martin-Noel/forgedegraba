@@ -7,12 +7,18 @@ type Props = {
   src: string;
   alt?: string;
   className?: string;
+  rotate90?: boolean;
 };
 
-export default function ImagePreview({ src, alt = "", className = "" }: Props) {
+export default function ImagePreview({
+  src,
+  alt = "",
+  className = "",
+  rotate90 = false,
+}: Props) {
   const open = () => {
     window.dispatchEvent(
-      new CustomEvent("open-image", { detail: { src, alt } })
+      new CustomEvent("open-image", { detail: { src, alt, rotate90 } })
     );
   };
 
@@ -20,17 +26,22 @@ export default function ImagePreview({ src, alt = "", className = "" }: Props) {
     <button
       type="button"
       onClick={open}
-      className={`relative block w-full overflow-hidden ${className}`}
+      className={`relative block w-full overflow-hidden ${
+        rotate90 ? "rotate-knife" : ""
+      } ${className}`}
       aria-label={`Agrandir ${alt}`}
       title={`Agrandir ${alt}`}
-      style={{ cursor: "zoom-in", minHeight: 220 }}
+      style={{
+        cursor: "zoom-in",
+        ...(rotate90 ? { aspectRatio: "1 / 1" } : { minHeight: 220 }),
+      }}
     >
       <Image
         src={src}
         alt={alt}
         fill
         sizes="(max-width: 639px) 72vw, 33vw"
-        className="object-contain"
+        className={`object-contain ${rotate90 ? "rotated-90" : ""}`}
       />
       {/* hidden native img for gallery src discovery by ImageModal */}
       {/* eslint-disable-next-line @next/next/no-img-element */}

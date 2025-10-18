@@ -39,7 +39,7 @@ export default function CreationsPage() {
         {(creations as Creation[]).map((c) => (
           <article key={c.id} className="creation-card">
             <div className="card-media">
-              <ImagePreview src={c.image} alt={c.title} className="" />
+              <ImagePreview src={c.image} alt={c.title} rotate90 />
             </div>
 
             <div className="card-body">
