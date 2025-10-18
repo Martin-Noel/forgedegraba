@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ImageModal() {
@@ -9,12 +8,30 @@ export default function ImageModal() {
   const [src, setSrc] = useState<string | null>(null);
   const [alt, setAlt] = useState<string | null>(null);
   const [gallery, setGallery] = useState<string[]>([]);
+  const [galleryRotate, setGalleryRotate] = useState<boolean[]>([]);
   const [index, setIndex] = useState<number | null>(null);
+  const [rotate90, setRotate90] = useState<boolean>(false);
+
+  // zoom/pan state
+  const [scale, setScale] = useState(1);
+  const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const isPanningRef = React.useRef(false);
+  const panStartRef = React.useRef<{
+    x: number;
+    y: number;
+    panX: number;
+    panY: number;
+  } | null>(null);
+  const pinchRef = React.useRef<{
+    startDist: number;
+    startScale: number;
+  } | null>(null);
 
   const openHandler = useCallback((e: Event) => {
     const detail = (e as CustomEvent).detail || {};
     const s = detail.src || null;
     const a = detail.alt || null;
+    const rFromEvent: boolean = !!detail.rotate90;
 
     // Prefer hidden native imgs (sr-only) we add in previews so we get original public paths
     let nodeList = Array.from(
@@ -27,6 +44,15 @@ export default function ImageModal() {
       );
     }
     const imgs = nodeList.map((i) => i.src).filter(Boolean);
+    const rotates = nodeList.map((i) => {
+      // If it's the hidden img we added, infer rotation from its closest button wrapper
+      if (i.classList.contains("sr-only")) {
+        const btn = i.closest("button");
+        return btn?.classList.contains("rotate-knife") || false;
+      }
+      // Otherwise infer from the image class directly
+      return i.classList.contains("rotated-90");
+    });
 
     let idx: number | null = null;
     if (s && imgs.length > 0) {
@@ -34,12 +60,23 @@ export default function ImageModal() {
       if (idx === -1) idx = null;
     }
 
-    if (imgs.length > 0) setGallery(imgs);
-    else setGallery([]);
+    if (imgs.length > 0) {
+      setGallery(imgs);
+      setGalleryRotate(rotates);
+    } else {
+      setGallery([]);
+      setGalleryRotate([]);
+    }
 
     setSrc(s);
     setAlt(a);
     setIndex(idx);
+    // Prefer rotation inferred from gallery index; fall back to event detail
+    if (idx != null && rotates[idx] != null) setRotate90(!!rotates[idx]);
+    else setRotate90(rFromEvent);
+    // reset zoom/pan when opening
+    setScale(1);
+    setPan({ x: 0, y: 0 });
     setOpen(true);
   }, []);
 
@@ -109,6 +146,10 @@ export default function ImageModal() {
     const next = Math.max(0, index - 1);
     setIndex(next);
     setSrc(gallery[next]);
+    if (galleryRotate.length === gallery.length)
+      setRotate90(!!galleryRotate[next]);
+    setScale(1);
+    setPan({ x: 0, y: 0 });
   };
 
   const showNext = () => {
@@ -116,6 +157,92 @@ export default function ImageModal() {
     const next = Math.min(gallery.length - 1, index + 1);
     setIndex(next);
     setSrc(gallery[next]);
+    if (galleryRotate.length === gallery.length)
+      setRotate90(!!galleryRotate[next]);
+    setScale(1);
+    setPan({ x: 0, y: 0 });
+  };
+
+  const clamp = (val: number, min: number, max: number) =>
+    Math.max(min, Math.min(max, val));
+
+  // wheel zoom (desktop)
+  const onWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = -e.deltaY;
+    const factor = Math.exp(delta * 0.001);
+    setScale((s) => clamp(s * factor, 1, 5));
+  };
+
+  // mouse pan
+  const onMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isPanningRef.current = true;
+    panStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      panX: pan.x,
+      panY: pan.y,
+    };
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isPanningRef.current || !panStartRef.current) return;
+    const dx = e.clientX - panStartRef.current.x;
+    const dy = e.clientY - panStartRef.current.y;
+    setPan({
+      x: panStartRef.current.panX + dx,
+      y: panStartRef.current.panY + dy,
+    });
+  };
+  const onMouseUp = () => {
+    isPanningRef.current = false;
+    panStartRef.current = null;
+  };
+
+  // touch: pinch zoom and pan
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const [t1, t2] = [e.touches[0], e.touches[1]];
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      const dist = Math.hypot(dx, dy);
+      pinchRef.current = { startDist: dist, startScale: scale };
+    } else if (e.touches.length === 1) {
+      const t = e.touches[0];
+      panStartRef.current = {
+        x: t.clientX,
+        y: t.clientY,
+        panX: pan.x,
+        panY: pan.y,
+      };
+    }
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (pinchRef.current && e.touches.length === 2) {
+      e.preventDefault();
+      const [t1, t2] = [e.touches[0], e.touches[1]];
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      const dist = Math.hypot(dx, dy);
+      const ratio = dist / pinchRef.current.startDist;
+      setScale(clamp(pinchRef.current.startScale * ratio, 1, 5));
+    } else if (
+      !pinchRef.current &&
+      e.touches.length === 1 &&
+      panStartRef.current
+    ) {
+      const t = e.touches[0];
+      const dx = t.clientX - panStartRef.current.x;
+      const dy = t.clientY - panStartRef.current.y;
+      setPan({
+        x: panStartRef.current.panX + dx,
+        y: panStartRef.current.panY + dy,
+      });
+    }
+  };
+  const onTouchEnd = () => {
+    pinchRef.current = null;
+    panStartRef.current = null;
   };
 
   // close on vertical swipe (mobile): track touchstart and detect vertical swipe
@@ -123,6 +250,8 @@ export default function ImageModal() {
 
   useEffect(() => {
     if (!open) return;
+    // If zoomed in, do not enable swipe-to-close to prioritize zoom/pan
+    if (scale > 1) return;
 
     const onTouchStart = (e: TouchEvent) => {
       if (!e.touches || e.touches.length === 0) return;
@@ -153,7 +282,7 @@ export default function ImageModal() {
       window.removeEventListener("touchmove", onTouchMove as EventListener);
       touchStartRef.current = null;
     };
-  }, [open]);
+  }, [open, scale]);
 
   return (
     <AnimatePresence>
@@ -172,7 +301,7 @@ export default function ImageModal() {
             exit={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="relative w-full max-w-[95vw] h-[85vh] max-h-[95vh]"
-            onClick={() => setOpen(false)}
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               className="absolute right-2 top-2 text-white bg-black/40 rounded-full p-2 z-20"
@@ -207,12 +336,28 @@ export default function ImageModal() {
               </>
             )}
 
-            <div className="w-full h-full relative">
-              <Image
+            <div
+              className="w-full h-full relative overflow-hidden"
+              onWheel={onWheel}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseUp}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={src}
                 alt={alt || "image"}
-                fill
-                className="object-contain"
+                className={`modal-img ${rotate90 ? "rotated-90-modal" : ""}`}
+                style={{
+                  transform: `translate(-50%, -50%) ${
+                    pan.x || pan.y ? `translate(${pan.x}px, ${pan.y}px) ` : ""
+                  }${rotate90 ? "rotate(90deg) " : ""}scale(${scale})`,
+                }}
+                draggable={false}
               />
             </div>
           </motion.div>

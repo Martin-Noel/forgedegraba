@@ -139,6 +139,23 @@ button {
   flex: 1 1 auto;
 }
 
+/* Modal image base positioning and sizing for manual zoom */
+.modal-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  will-change: transform;
+  transition: transform 120ms ease-out;
+}
+
+/* When rotated in modal, use natural sizing; transform is fully controlled inline */
+/* Intentionally no separate rotated class for modal; rotation is applied inline */
+
 .creation-title {
   font-size: 1.125rem;
   margin: 0 0 0.25rem 0;
