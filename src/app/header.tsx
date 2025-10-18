@@ -48,27 +48,25 @@ export default function Header() {
 
         {/* Desktop menu */}
         <ul className="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
-          {["Savoir-faire", "Créations", "Atelier", "Stages", "Contact"].map(
-            (item) => (
-              <li key={item}>
-                {item != "Stages" ? (
-                  <Link
-                    href={`#${item
-                      .toLowerCase()
-                      .replace("é", "e")
-                      .replace(" ", "-")}`}
-                    className="hover:text-copper"
-                  >
-                    {item}
-                  </Link>
-                ) : (
-                  <Link href="/stages" className="hover:text-copper">
-                    {item}
-                  </Link>
-                )}
-              </li>
-            )
-          )}
+          {["Savoir-faire", "Créations", "Stages", "Contact"].map((item) => (
+            <li key={item}>
+              {item != "Stages" ? (
+                <Link
+                  href={`#${item
+                    .toLowerCase()
+                    .replace("é", "e")
+                    .replace(" ", "-")}`}
+                  className="hover:text-copper"
+                >
+                  {item}
+                </Link>
+              ) : (
+                <Link href="/stages" className="hover:text-copper">
+                  {item}
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
 
         {/* Mobile menu button */}
@@ -102,35 +100,30 @@ export default function Header() {
                   transition={{ duration: 0.3 }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {[
-                    "Savoir-faire",
-                    "Créations",
-                    "Atelier",
-                    "Stages",
-                    "Contact",
-                  ].map((item) =>
-                    item !== "Stages" ? (
-                      <Link
-                        key={item}
-                        href={`#${item
-                          .toLowerCase()
-                          .replace("é", "e")
-                          .replace(" ", "-")}`}
-                        className="hover:text-copper"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    ) : (
-                      <Link
-                        key={item}
-                        href="/stages"
-                        className="hover:text-copper"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    )
+                  {["Savoir-faire", "Créations", "Stages", "Contact"].map(
+                    (item) =>
+                      item !== "Stages" ? (
+                        <Link
+                          key={item}
+                          href={`#${item
+                            .toLowerCase()
+                            .replace("é", "e")
+                            .replace(" ", "-")}`}
+                          className="hover:text-copper"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {item}
+                        </Link>
+                      ) : (
+                        <Link
+                          key={item}
+                          href="/stages"
+                          className="hover:text-copper"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {item}
+                        </Link>
+                      )
                   )}
                 </motion.div>
               </motion.div>

@@ -85,14 +85,36 @@ export default function HomePage() {
         <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
           Le Savoir-Faire
         </h2>
-        <p className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto">
-          Bienvenue à la Forge de Graba, un lieu où la passion pour la
-          coutellerie rencontre l&apos;excellence artisanale.
-        </p>
-        <p className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto">
-          Située à Tursac, notre forge perpétue un savoir-faire traditionnel,
-          alliant techniques ancestrales et innovation contemporaine.
-        </p>
+        <div className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto space-y-4">
+          <p>
+            Bienvenue dans mon atelier de coutellerie artisanale. Ici, chaque
+            couteau de cuisine est forgé à la main avec passion, précision et
+            savoir-faire.
+          </p>
+
+          <p>
+            Ancien cuisinier professionnel, c&apos;est en cuisine que j&apos;ai
+            compris l&apos;importance d&apos;un bon couteau. Mon objectif :
+            proposer des outils à la fois performants, durables et esthétiques,
+            qui répondent aux exigences des professionnels comme des amateurs
+            passionnés.
+          </p>
+
+          <p>
+            Toutes les lames de mes couteaux sont forgées dans mon atelier, en
+            sélectionnant des aciers carbone de qualité. Chaque manche est
+            façonné artisanalement, avec des matériaux variés (bois stabilisé,
+            essence locale) pour offrir une prise en main confortable et un
+            équilibre parfait. Chaque pièce est unique, conçue pour durer et
+            pour être utilisée tous les jours.
+          </p>
+
+          <p>
+            Que vous soyez chef, passionné de cuisine ou collectionneur, vous
+            trouverez ici un couteau forgé sur mesure, pensé pour vous
+            accompagner au quotidien en cuisine.
+          </p>
+        </div>
       </section>
 
       {/* CRÉATIONS */}
