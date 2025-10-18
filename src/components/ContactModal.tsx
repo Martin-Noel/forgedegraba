@@ -28,6 +28,45 @@ export default function ContactModal() {
       window.removeEventListener("open-contact", handler as EventListener);
   }, []);
 
+  // prevent background scroll and close on vertical swipe when modal is open
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // attach handlers to the modal overlay element for better control
+    const overlay = document.getElementById("contact-modal");
+    let start: { x: number; y: number } | null = null;
+    const onTouchStart = (e: TouchEvent) => {
+      const t = e.touches?.[0];
+      if (!t) return;
+      start = { x: t.clientX, y: t.clientY };
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (!start) return;
+      const t = e.touches?.[0];
+      if (!t) return;
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const threshold = 40;
+      if (Math.abs(dy) > threshold && Math.abs(dy) > Math.abs(dx)) {
+        e.preventDefault();
+        setOpen(false);
+        start = null;
+      }
+    };
+
+    overlay?.addEventListener("touchstart", onTouchStart, { passive: true });
+    overlay?.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      overlay?.removeEventListener("touchstart", onTouchStart as EventListener);
+      overlay?.removeEventListener("touchmove", onTouchMove as EventListener);
+      start = null;
+    };
+  }, [open]);
+
   const close = () => setOpen(false);
 
   const submit = (e?: React.FormEvent) => {

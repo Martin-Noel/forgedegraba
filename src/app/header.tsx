@@ -13,6 +13,59 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("touchmove", onTouchMove as EventListener);
+    };
+  }, [menuOpen]);
+
+  // attach swipe-to-close directly to overlay for consistent behavior on mobile
+  useEffect(() => {
+    if (!menuOpen) return;
+    const overlay = document.querySelector<HTMLDivElement>(
+      ".mobile-menu-overlay"
+    );
+    if (!overlay) return;
+
+    let start: { x: number; y: number } | null = null;
+    const onTouchStart = (e: TouchEvent) => {
+      const t = e.touches?.[0];
+      if (!t) return;
+      start = { x: t.clientX, y: t.clientY };
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (!start) return;
+      const t = e.touches?.[0];
+      if (!t) return;
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const threshold = 40;
+      if (Math.abs(dy) > threshold && Math.abs(dy) > Math.abs(dx)) {
+        setMenuOpen(false);
+        start = null;
+      }
+    };
+
+    overlay.addEventListener("touchstart", onTouchStart, { passive: true });
+    overlay.addEventListener("touchmove", onTouchMove, { passive: true });
+
+    return () => {
+      overlay.removeEventListener("touchstart", onTouchStart as EventListener);
+      overlay.removeEventListener("touchmove", onTouchMove as EventListener);
+      start = null;
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       if (menuOpen) setMenuOpen(false);
@@ -84,7 +137,7 @@ export default function Header() {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 backdrop-blur-md"
+                className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 backdrop-blur-md mobile-menu-overlay"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

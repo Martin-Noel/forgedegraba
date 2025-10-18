@@ -1,6 +1,6 @@
-import Image from "next/image";
 import creations from "../../data/creations.json";
 import OpenContactButton from "../../../src/components/OpenContactButton";
+import ImagePreview from "../../../src/components/ImagePreview";
 
 type Creation = {
   id: string;
@@ -31,7 +31,7 @@ export default function CreationsPage() {
         {(creations as Creation[]).map((c) => (
           <article key={c.id} className="creation-card">
             <div className="card-media">
-              <Image src={c.image} alt={c.title} fill className="next-image" />
+              <ImagePreview src={c.image} alt={c.title} className="" />
             </div>
 
             <div className="card-body">
