@@ -46,7 +46,7 @@ export default function StagesPage() {
 
           <div className="mt-4">
             <OpenContactButton
-              className="stages-cta"
+              className="btn-primary"
               subject="Réservation Stage initiation"
             >
               Réserver
@@ -96,7 +96,7 @@ export default function StagesPage() {
 
           <div className="mt-4">
             <OpenContactButton
-              className="stages-cta"
+              className="btn-primary"
               subject="Réservation Stage couteau droit"
             >
               Réserver
@@ -144,7 +144,7 @@ export default function StagesPage() {
 
           <div className="mt-4">
             <OpenContactButton
-              className="stages-cta"
+              className="btn-primary"
               subject="Réservation Stage immersion individuel"
             >
               Réserver

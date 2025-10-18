@@ -20,16 +20,16 @@ export default function MentionsLegales() {
               Le site &quot;La forge de graba&quot; est édité par :
             </p>
             <ul className="mt-2 list-none text-sm text-gray-300">
-              <li>Nom / Enseigne : La forge de Graba</li>
-              <li>Responsable de la publication : Graba</li>
-              <li>Adresse : (à compléter)</li>
+              <li>Nom / Enseigne : Martin NOËL</li>
+              <li>Responsable de la publication : Martin NOËL</li>
+              <li>Adresse : 11 Uhaldeko Bidea 64250 Louhossoa</li>
               <li>
                 Email :{" "}
                 <a
-                  href="mailto:contact@forge-artisanale.fr"
+                  href="mailto:martin.noel.dev@gmail.com"
                   className="underline"
                 >
-                  contact@forge-artisanale.fr
+                  martin.noel.dev@gmail.com
                 </a>
               </li>
             </ul>
@@ -51,7 +51,7 @@ export default function MentionsLegales() {
             </h2>
             <p className="leading-relaxed text-sm text-gray-300">
               Tous les contenus présents sur ce site (textes, images, logos,
-              illustrations) sont la propriété de leur auteur ou sont utilisés
+              illustrations) sont la propriété de leurs auteurs ou sont utilisés
               avec permission. Toute reproduction totale ou partielle est
               interdite sans accord préalable.
             </p>
@@ -68,17 +68,14 @@ export default function MentionsLegales() {
               disposez d&apos;un droit d&apos;accès, de rectification et de
               suppression de vos données. Pour exercer ce droit, contactez-nous
               à{" "}
-              <a
-                href="mailto:contact@forge-artisanale.fr"
-                className="underline"
-              >
-                contact@forge-artisanale.fr
+              <a href="mailto:martin.noel.dev@gmail.com" className="underline">
+                martin.noel.dev@gmail.com
               </a>
               .
             </p>
           </section>
 
-          <section>
+          {/* <section>
             <h2 className="text-xl font-semibold mb-2 text-copper">Cookies</h2>
             <p className="leading-relaxed text-sm text-gray-300">
               Le site peut utiliser des cookies destinés à améliorer
@@ -86,7 +83,7 @@ export default function MentionsLegales() {
               exemple pour mesurer la fréquentation). Vous pouvez gérer les
               cookies via les paramètres de votre navigateur.
             </p>
-          </section>
+          </section> */}
 
           <section>
             <h2 className="text-xl font-semibold mb-2 text-copper">
@@ -115,16 +112,10 @@ export default function MentionsLegales() {
               Crédits photographiques
             </h2>
             <p className="leading-relaxed text-sm text-gray-300">
-              Photo principale (hero) : Raphael Hinojosa
+              Photo principale (hero) : Raphael Hinojosa Photos des créations /
+              couteaux : Valentin Adam
             </p>
           </section>
-
-          <p className="mt-4 text-sm text-gray-500">
-            Remarque : ce texte est une trame indicative. Veillez à le compléter
-            avec vos informations réelles et, si besoin, à consulter un
-            conseiller juridique pour conformité complète au droit français et
-            européen.
-          </p>
         </div>
       </div>
     </div>
