@@ -3,6 +3,7 @@
 import Image from "next/image";
 import creations from "../data/creations.json";
 import OpenContactButton from "../components/OpenContactButton";
+import ImagePreview from "../components/ImagePreview";
 
 type Creation = {
   id: string;
@@ -248,12 +249,7 @@ export default function HomePage() {
                   className="creation-card snap-center sm:snap-none block h-full"
                 >
                   <div className="card-media">
-                    <Image
-                      src={c.image}
-                      alt={c.title}
-                      fill
-                      className="next-image"
-                    />
+                    <ImagePreview src={c.image} alt={c.title} rotate90 />
                   </div>
                   <div className="card-body">
                     {/* Title + meta centered to match creations page */}
