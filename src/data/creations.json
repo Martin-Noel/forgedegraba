@@ -10,7 +10,8 @@
     "image": "/creations/damas-sauvage-01.jpeg",
     "featured": true,
     "tags": ["damas", "couteau-de-cuisine"],
-    "createdAt": "2025-10-18"
+    "createdAt": "2025-10-18",
+    "price": 420
   },
   {
     "id": "sandwich-xc75-01",
@@ -23,7 +24,8 @@
     "image": "/creations/sandwich-xc75-01.jpeg",
     "featured": true,
     "tags": ["sandwich", "xc75", "xc100"],
-    "createdAt": "2025-10-18"
+    "createdAt": "2025-10-18",
+    "price": 320
   },
   {
     "id": "damas-mosaique-xc100-01",
@@ -36,6 +38,77 @@
     "image": "/creations/damas-mosaique-xc100-01.jpeg",
     "featured": true,
     "tags": ["damas", "mosaique", "xc100"],
-    "createdAt": "2025-10-18"
+    "createdAt": "2025-10-18",
+    "price": 930
+  },
+  {
+    "id": "sandwich-xc75-olivier-01",
+    "title": "Sandwich XC75 / Nikel Pur / XC100",
+    "blade_length_cm": 16.7,
+    "handle_length_cm": 12,
+    "width_cm": 5,
+    "handle_material": "Olivier",
+    "description": "Sandwich XC75 / Nikel Pur / XC100 — lame sandwich, manche en olivier. Pièce unique.",
+    "image": "/creations/sandwich-xc75-olivier-01.jpeg",
+    "featured": false,
+    "tags": ["sandwich", "xc75", "xc100", "nikel-pur"],
+    "createdAt": "2025-10-18",
+    "price": 185
+  },
+  {
+    "id": "damas-exotique-xc100-01",
+    "title": "Damas exotique XC75/15N20/cuivre, cœur en XC100",
+    "blade_length_cm": 19.5,
+    "handle_length_cm": 13.6,
+    "width_cm": 6.8,
+    "handle_material": "Goyavier, ébène, rondelle cuivre",
+    "description": "Damas exotique en XC75/15N20/cuivre avec cœur en XC100 — lame damassée, manche en goyavier et ébène, rondelle cuivre. Pièce unique.",
+    "image": "/creations/damas-exotique-xc100-01.jpeg",
+    "featured": false,
+    "tags": ["damas", "exotique", "xc75", "15n20", "cuivre", "xc100"],
+    "createdAt": "2025-10-18",
+    "price": 780
+  },
+  {
+    "id": "sandwich-xc75-noyer-01",
+    "title": "Sandwich XC75 / Nikel Pur / XC100",
+    "blade_length_cm": 13,
+    "handle_length_cm": 11.5,
+    "width_cm": 3.9,
+    "handle_material": "Noyer",
+    "description": "Sandwich XC75 / Nikel Pur / XC100 — lame sandwich, manche en noyer. Pièce unique.",
+    "image": "/creations/sandwich-xc75-noyer-01.jpeg",
+    "featured": false,
+    "tags": ["sandwich", "xc75", "xc100", "nikel-pur"],
+    "createdAt": "2025-10-18",
+    "price": 175
+  },
+  {
+    "id": "acier-homogene-xc75-01",
+    "title": "Acier homogène XC75",
+    "blade_length_cm": 17,
+    "handle_length_cm": 11,
+    "width_cm": 4,
+    "handle_material": "If, padouk, rondelle laiton",
+    "description": "Acier homogène XC75 — lame en XC75, manche en if et padouk, rondelle laiton. Pièce unique.",
+    "image": "/creations/acier-homogene-xc75-01.jpeg",
+    "featured": false,
+    "tags": ["acier-homogene", "xc75"],
+    "createdAt": "2025-10-18",
+    "price": 165
+  },
+  {
+    "id": "acier-homogene-xc75-02",
+    "title": "Acier homogène XC75",
+    "blade_length_cm": 23,
+    "handle_length_cm": 12.8,
+    "width_cm": 6,
+    "handle_material": "If",
+    "description": "Acier homogène XC75 — lame en XC75, manche en if. Pièce unique.",
+    "image": "/creations/acier-homogene-xc75-02.jpeg",
+    "featured": false,
+    "tags": ["acier-homogene", "xc75"],
+    "createdAt": "2025-10-18",
+    "price": 210
   }
 ]

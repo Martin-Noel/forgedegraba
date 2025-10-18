@@ -11,7 +11,15 @@ type Creation = {
   handle_material: string;
   description: string;
   image: string;
+  price: number;
 };
+
+const priceFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
 
 export default function CreationsPage() {
   return (
@@ -43,13 +51,18 @@ export default function CreationsPage() {
               <p className="mt-2 text-gray-300 text-sm">{c.handle_material}</p>
               <p className="mt-2 text-gray-300 text-sm">{c.description}</p>
 
-              <div className="mt-4">
+              <div className="mt-4 flex items-center gap-4">
                 <OpenContactButton
                   className="btn-primary"
                   subject={`Info ${c.title}`}
                 >
                   Demande info
                 </OpenContactButton>
+                {typeof c.price === "number" && (
+                  <span className="ml-auto font-semibold text-copper">
+                    {priceFormatter.format(c.price)}
+                  </span>
+                )}
               </div>
             </div>
           </article>
