@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
+import NavItem from "../components/NavItem";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -47,32 +48,24 @@ export default function Header() {
         </Link>
 
         {/* Desktop menu */}
-        <ul className="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
-          {["Créations", "Stages", "Contact"].map((item) => (
-            <li key={item}>
-              {item != "Stages" && item != "Créations" ? (
-                <Link
-                  href={`#${item
-                    .toLowerCase()
-                    .replace("é", "e")
-                    .replace(" ", "-")}`}
-                  className="hover:text-copper"
-                >
-                  {item}
-                </Link>
-              ) : (
-                <Link
-                  href={`/${item
-                    .toLowerCase()
-                    .replace("é", "e")
-                    .replace(" ", "-")}`}
-                  className="hover:text-copper"
-                >
-                  {item}
-                </Link>
-              )}
-            </li>
-          ))}
+        <ul className="hidden md:flex space-x-8 text-sm">
+          <li>
+            <NavItem href="/creations">Créations</NavItem>
+          </li>
+          <li>
+            <NavItem href="/stages">Stages</NavItem>
+          </li>
+          <li>
+            <NavItem
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("open-contact", { detail: {} })
+                )
+              }
+            >
+              Contact
+            </NavItem>
+          </li>
         </ul>
 
         {/* Mobile menu button */}
@@ -106,33 +99,22 @@ export default function Header() {
                   transition={{ duration: 0.3 }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {["Créations", "Stages", "Contact"].map((item) =>
-                    item != "Stages" && item != "Créations" ? (
-                      <Link
-                        key={item}
-                        href={`#${item
-                          .toLowerCase()
-                          .replace("é", "e")
-                          .replace(" ", "-")}`}
-                        className="hover:text-copper"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    ) : (
-                      <Link
-                        key={item}
-                        href={`/${item
-                          .toLowerCase()
-                          .replace("é", "e")
-                          .replace(" ", "-")}`}
-                        className="hover:text-copper"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    )
-                  )}
+                  <NavItem
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-contact", { detail: {} })
+                      );
+                      setMenuOpen(false);
+                    }}
+                  >
+                    Contact
+                  </NavItem>
+                  <NavItem href="/creations" onClick={() => setMenuOpen(false)}>
+                    Créations
+                  </NavItem>
+                  <NavItem href="/stages" onClick={() => setMenuOpen(false)}>
+                    Stages
+                  </NavItem>
                 </motion.div>
               </motion.div>
             )}

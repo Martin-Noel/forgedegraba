@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import creations from "../data/creations.json";
+import OpenContactButton from "../components/OpenContactButton";
 
 type Creation = {
   id: string;
@@ -298,12 +299,9 @@ export default function HomePage() {
           Pour toute demande de création sur mesure ou de collaboration,
           contactez-moi :
         </p>
-        <a
-          href="mailto:contact@forge-artisanale.fr"
-          className="bg-copper text-white px-6 py-3 rounded-xl hover:bg-copper/80 transition"
-        >
+        <OpenContactButton className="bg-copper text-white px-6 py-3 rounded-xl hover:bg-copper/80 transition">
           Envoyer un message
-        </a>
+        </OpenContactButton>
       </section>
     </>
   );

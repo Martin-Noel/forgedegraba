@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import OpenContactButton from "../../../src/components/OpenContactButton";
 
 export const metadata: Metadata = {
   title: "Stages — La forge de graba",
@@ -44,12 +45,12 @@ export default function StagesPage() {
           </div>
 
           <div className="mt-4">
-            <a
-              href="mailto:contact@forge-artisanale.fr?subject=Réservation%20Stage%20initiation"
+            <OpenContactButton
               className="stages-cta"
+              subject="Réservation Stage initiation"
             >
               Réserver
-            </a>
+            </OpenContactButton>
           </div>
 
           <p className="mt-4 text-gray-300">
@@ -94,12 +95,12 @@ export default function StagesPage() {
           </div>
 
           <div className="mt-4">
-            <a
-              href="mailto:contact@forge-artisanale.fr?subject=Réservation%20Stage%20couteau%20droit"
+            <OpenContactButton
               className="stages-cta"
+              subject="Réservation Stage couteau droit"
             >
               Réserver
-            </a>
+            </OpenContactButton>
           </div>
 
           <p className="mt-4 text-gray-300">
@@ -142,12 +143,12 @@ export default function StagesPage() {
           </div>
 
           <div className="mt-4">
-            <a
-              href="mailto:contact@forge-artisanale.fr?subject=Réservation%20Stage%20immersion%20individuel"
+            <OpenContactButton
               className="stages-cta"
+              subject="Réservation Stage immersion individuel"
             >
               Réserver
-            </a>
+            </OpenContactButton>
           </div>
 
           <p className="mt-4 text-gray-300">

@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Header from "./header";
+import ContactModal from "../components/ContactModal";
 
 export const metadata: Metadata = {
   title: "La forge de graba",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`bg-neutral-950 text-white`}>
         <Header />
+        <ContactModal />
         <main>{children}</main>
         <footer className="mt-20 py-10 text-center text-sm text-steel">
           © {new Date().getFullYear()} La forge de{" "}

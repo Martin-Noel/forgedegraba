@@ -1,5 +1,6 @@
 import Image from "next/image";
 import creations from "../../data/creations.json";
+import OpenContactButton from "../../../src/components/OpenContactButton";
 
 type Creation = {
   id: string;
@@ -43,14 +44,12 @@ export default function CreationsPage() {
               <p className="mt-2 text-gray-300 text-sm">{c.description}</p>
 
               <div className="mt-4">
-                <a
+                <OpenContactButton
                   className="btn-primary"
-                  href={`mailto:contact@forge-artisanale.fr?subject=Info%20${encodeURIComponent(
-                    c.title
-                  )}`}
+                  subject={`Info ${c.title}`}
                 >
                   Demande info
-                </a>
+                </OpenContactButton>
               </div>
             </div>
           </article>
