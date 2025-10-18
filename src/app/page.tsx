@@ -142,24 +142,27 @@ export default function HomePage() {
 
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {(creations as Creation[]).filter((c: Creation) => c.featured).slice(0, 3).map((c) => (
-              <div key={c.id} className="creation-card block">
-                <div className="card-media">
-                  <Image
-                    src={c.image}
-                    alt={c.title}
-                    fill
-                    className="next-image"
-                  />
+            {(creations as Creation[])
+              .filter((c: Creation) => c.featured)
+              .slice(0, 3)
+              .map((c) => (
+                <div key={c.id} className="creation-card block">
+                  <div className="card-media">
+                    <Image
+                      src={c.image}
+                      alt={c.title}
+                      fill
+                      className="next-image"
+                    />
+                  </div>
+                  <div className="card-body">
+                    <h3 className="creation-title font-cinzel">{c.title}</h3>
+                    <p className="creation-meta">
+                      Lame {c.blade_length_cm}cm  Manche {c.handle_length_cm}cm
+                    </p>
+                  </div>
                 </div>
-                <div className="card-body">
-                  <h3 className="creation-title font-cinzel">{c.title}</h3>
-                  <p className="creation-meta">
-                    Lame {c.blade_length_cm}cm  Manche {c.handle_length_cm}cm
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           <div className="text-center mt-8">
