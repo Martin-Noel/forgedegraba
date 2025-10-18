@@ -53,18 +53,31 @@ export default function ImageModal() {
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const isDesktop = window.matchMedia(
+      "(min-width: 1024px) and (pointer: fine)"
+    ).matches;
+    let didLock = false;
+    if (!isDesktop) {
+      document.body.style.overflow = "hidden";
+      didLock = true;
 
-    // prevent page scrolling while touching inside modal
-    const onTouchMoveDoc = (e: TouchEvent) => {
-      // when modal open, prevent default vertical scroll
-      e.preventDefault();
-    };
-    window.addEventListener("touchmove", onTouchMoveDoc, { passive: false });
+      // prevent page scrolling while touching inside modal
+      const onTouchMoveDoc = (e: TouchEvent) => {
+        // when modal open, prevent default vertical scroll
+        e.preventDefault();
+      };
+      window.addEventListener("touchmove", onTouchMoveDoc, { passive: false });
 
+      return () => {
+        if (didLock) document.body.style.overflow = prev;
+        window.removeEventListener(
+          "touchmove",
+          onTouchMoveDoc as EventListener
+        );
+      };
+    }
     return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("touchmove", onTouchMoveDoc as EventListener);
+      if (didLock) document.body.style.overflow = prev;
     };
   }, [open]);
 

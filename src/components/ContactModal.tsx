@@ -32,7 +32,16 @@ export default function ContactModal() {
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    // Detect desktop (wide + fine pointer). On desktop we avoid hiding the
+    // native scrollbar to prevent header/nav layout shift.
+    const isDesktop = window.matchMedia(
+      "(min-width: 1024px) and (pointer: fine)"
+    ).matches;
+    let didLock = false;
+    if (!isDesktop) {
+      document.body.style.overflow = "hidden";
+      didLock = true;
+    }
 
     // attach handlers to the modal overlay element for better control
     const overlay = document.getElementById("contact-modal");
@@ -60,7 +69,7 @@ export default function ContactModal() {
     overlay?.addEventListener("touchmove", onTouchMove, { passive: false });
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      if (didLock) document.body.style.overflow = previousOverflow;
       overlay?.removeEventListener("touchstart", onTouchStart as EventListener);
       overlay?.removeEventListener("touchmove", onTouchMove as EventListener);
       start = null;

@@ -15,16 +15,27 @@ export default function Header() {
   useEffect(() => {
     if (!menuOpen) return;
     const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    // detect desktop (wide + fine pointer). Avoid hiding native scrollbar on desktop
+    // to prevent layout shift of header/nav.
+    const isDesktop = window.matchMedia(
+      "(min-width: 1024px) and (pointer: fine)"
+    ).matches;
+    let didLock = false;
+    let onTouchMove: ((e: TouchEvent) => void) | null = null;
+    if (!isDesktop) {
+      document.body.style.overflow = "hidden";
+      didLock = true;
 
-    const onTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-    };
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
+      onTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+      window.addEventListener("touchmove", onTouchMove, { passive: false });
+    }
 
     return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("touchmove", onTouchMove as EventListener);
+      if (didLock) document.body.style.overflow = prev;
+      if (onTouchMove)
+        window.removeEventListener("touchmove", onTouchMove as EventListener);
     };
   }, [menuOpen]);
 
