@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 type Props = {
   href?: string;
@@ -16,10 +17,24 @@ export default function NavItem({
   className = "",
   children,
 }: Props) {
-  const base = "hover:text-copper uppercase tracking-wider cursor-pointer";
+  const base = "nav-item uppercase tracking-wider cursor-pointer";
+  const pathname = usePathname();
+
   if (href) {
+    // consider active when pathname equals href or starts with href (for subroutes)
+    const isActive =
+      pathname === href ||
+      pathname === href + "/" ||
+      pathname?.startsWith(href + "/");
     return (
-      <Link href={href} className={`${base} ${className}`}>
+      <Link
+        href={href}
+        onClick={onClick}
+        className={`${base} ${
+          isActive ? "opacity-100" : "opacity-90"
+        } ${className}`}
+        aria-current={isActive ? "page" : undefined}
+      >
         {children}
       </Link>
     );

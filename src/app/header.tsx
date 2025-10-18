@@ -99,6 +99,12 @@ export default function Header() {
                   transition={{ duration: 0.3 }}
                   onClick={(e) => e.stopPropagation()}
                 >
+                  <NavItem href="/creations" onClick={() => setMenuOpen(false)}>
+                    Créations
+                  </NavItem>
+                  <NavItem href="/stages" onClick={() => setMenuOpen(false)}>
+                    Stages
+                  </NavItem>
                   <NavItem
                     onClick={() => {
                       window.dispatchEvent(
@@ -108,12 +114,6 @@ export default function Header() {
                     }}
                   >
                     Contact
-                  </NavItem>
-                  <NavItem href="/creations" onClick={() => setMenuOpen(false)}>
-                    Créations
-                  </NavItem>
-                  <NavItem href="/stages" onClick={() => setMenuOpen(false)}>
-                    Stages
                   </NavItem>
                 </motion.div>
               </motion.div>

@@ -31,19 +31,37 @@ button {
   transition: all 0.3s ease;
 }
 
-.bg-copper {
-  background-color: var(--color-copper);
-}
-.bg-copper:hover {
-  background-color: #d1824a;
+.text-steel {
+  color: var(--color-steel);
 }
 
+/* Utility class for nav items: ensures hover/focus copper color */
+.nav-item {
+  color: inherit;
+  transition: color 160ms ease;
+}
+
+/* Use a subtle underline for keyboard focus (focus-visible) instead of an outline box */
+.nav-item:focus-visible {
+  color: var(--color-copper);
+  text-decoration: underline;
+  text-decoration-color: rgba(181,110,62,0.85);
+  text-underline-offset: 4px;
+}
+
+.nav-item:hover {
+  color: var(--color-copper);
+}
+
+/* immediate fallback utility for text color (keeps compatibility during theming) */
 .text-copper {
   color: var(--color-copper);
 }
 
-.text-steel {
-  color: var(--color-steel);
+/* active nav item when aria-current set */
+.nav-item[aria-current="page"] {
+  color: var(--color-copper);
+  font-weight: 600;
 }
 
 /* Stages page specific tweaks */
@@ -110,6 +128,7 @@ button {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 /* Carousel padding helpers to center first/last snap elements on small screens */

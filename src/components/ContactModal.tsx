@@ -66,7 +66,7 @@ export default function ContactModal() {
         <button
           onClick={close}
           aria-label="Fermer"
-          className="absolute right-4 top-4 text-gray-400 hover:text-white"
+          className="absolute right-4 top-4 text-gray-400 hover:text-white cursor-pointer text-copper"
         >
           ✕
         </button>
