@@ -5,7 +5,7 @@
 :root {
   --color-bg: #0f0f0f;
   --color-text: #f4f2ee;
-  --color-copper: #b56e3e;
+  --color-copper: #A35E42;
   --color-steel: #7a7a7a;
 }
 
@@ -33,6 +33,23 @@ button {
 
 .text-steel {
   color: var(--color-steel);
+}
+
+/* Utility: justify text alignment for long paragraphs */
+.text-justified {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Stages: ensure description blocks have equal visual height on desktop
+   so that the 'Jour 1' headings align across columns */
+.stage-summary {
+  min-height: 0; /* mobile: natural flow */
+}
+@media (min-width: 768px) {
+  .stage-summary {
+    min-height: 9.5rem; /* tune as needed to align 'Jour 1' across cards */
+  }
 }
 
 /* Utility class for nav items: ensures hover/focus copper color */
@@ -71,7 +88,7 @@ button {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  
+
 }
 
 /* Generic card used across creations / stages */
@@ -126,17 +143,20 @@ button {
 .btn-primary {
   display: inline-block;
   /* slightly transparent by default for a softer look */
-  background: rgba(181,110,62,0.92); /* var(--color-copper) @ 92% */
+  /* slight transparency for the variable copper color */
+  background: color-mix(in srgb, var(--color-copper) 85%, transparent);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   cursor: pointer;
+  /* smoother color/background transition than generic buttons */
+  transition: background-color 260ms ease, color 260ms ease, box-shadow 260ms ease;
 }
 
 /* Stronger on hover/focus to indicate interactivity */
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: rgba(181,110,62,1);
+  background: var(--color-copper);
 }
 
 /* Ensure CTAs inside card-body are centered horizontally */
