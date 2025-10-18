@@ -11,7 +11,7 @@ type Creation = {
   handle_material: string;
   description: string;
   image: string;
-  price: number;
+  price?: number;
 };
 
 const priceFormatter = new Intl.NumberFormat("fr-FR", {
@@ -35,7 +35,7 @@ export default function CreationsPage() {
         </p>
       </header>
 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 items-stretch">
         {(creations as Creation[]).map((c) => (
           <article key={c.id} className="creation-card">
             <div className="card-media">
@@ -43,26 +43,40 @@ export default function CreationsPage() {
             </div>
 
             <div className="card-body">
-              <h3 className="creation-title font-cinzel">{c.title}</h3>
-              <p className="creation-meta">
-                Lame {c.blade_length_cm}cm · Manche {c.handle_length_cm}cm ·{" "}
-                {c.width_cm}cm
-              </p>
-              <p className="mt-2 text-gray-300 text-sm">{c.handle_material}</p>
-              <p className="mt-2 text-gray-300 text-sm">{c.description}</p>
+              {/* Title + meta centered */}
+              <div className="text-center">
+                <h3 className="creation-title font-cinzel">{c.title}</h3>
+                <p className="creation-meta">
+                  Lame {c.blade_length_cm}cm · Manche {c.handle_length_cm}cm ·{" "}
+                  {c.width_cm}cm
+                </p>
+              </div>
 
-              <div className="mt-4 flex items-center gap-4">
-                <OpenContactButton
-                  className="btn-primary"
-                  subject={`Info ${c.title}`}
-                >
-                  Demande info
-                </OpenContactButton>
-                {typeof c.price === "number" && (
-                  <span className="ml-auto font-semibold text-copper">
-                    {priceFormatter.format(c.price)}
-                  </span>
-                )}
+              {/* Body copy grows to fill, like stages */}
+              <div className="flex-1 mt-2">
+                <p className="text-gray-300 text-sm text-center">
+                  {c.handle_material}
+                </p>
+                <p className="mt-2 text-gray-300 text-sm text-center">
+                  {c.description}
+                </p>
+              </div>
+
+              {/* Footer: price then CTA centered */}
+              <div className="mt-5 text-center">
+                <div className="min-h-[1.75rem] text-copper font-semibold text-lg mb-3">
+                  {typeof c.price === "number"
+                    ? priceFormatter.format(c.price)
+                    : "\u00A0"}
+                </div>
+                <div className="flex justify-center">
+                  <OpenContactButton
+                    className="btn-primary"
+                    subject={`Info ${c.title}`}
+                  >
+                    Demande info
+                  </OpenContactButton>
+                </div>
               </div>
             </div>
           </article>

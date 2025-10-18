@@ -235,7 +235,7 @@ export default function HomePage() {
           {/* Carousel container: mobile snap, grid on larger screens */}
           <div
             id="creations-carousel"
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none"
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible sm:snap-none items-stretch"
             role="list"
           >
             {(creations as Creation[])
@@ -245,7 +245,7 @@ export default function HomePage() {
                 <div
                   key={c.id}
                   role="listitem"
-                  className="creation-card snap-center sm:snap-none block"
+                  className="creation-card snap-center sm:snap-none block h-full"
                 >
                   <div className="card-media">
                     <Image
@@ -256,10 +256,14 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="card-body">
-                    <h3 className="creation-title font-cinzel">{c.title}</h3>
-                    <p className="creation-meta">
-                      Lame {c.blade_length_cm}cm Manche {c.handle_length_cm}cm
-                    </p>
+                    {/* Title + meta centered to match creations page */}
+                    <div className="text-center">
+                      <h3 className="creation-title font-cinzel">{c.title}</h3>
+                      <p className="creation-meta">
+                        Lame {c.blade_length_cm}cm · Manche {c.handle_length_cm}
+                        cm · {c.width_cm}cm
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
