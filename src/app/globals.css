@@ -124,11 +124,31 @@ button {
 
 .btn-primary {
   display: inline-block;
-  background: var(--color-copper);
+  /* slightly transparent by default for a softer look */
+  background: rgba(181,110,62,0.92); /* var(--color-copper) @ 92% */
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* Stronger on hover/focus to indicate interactivity */
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: rgba(181,110,62,1);
+}
+
+/* Ensure CTAs inside card-body are centered horizontally */
+.creation-card .card-body > .btn-primary,
+.creation-card .card-body > .btn-primary:where(button, a) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* If the button is wrapped in a div (mt-4), center that container as well */
+.creation-card .card-body > .mt-4 {
+  display: flex;
+  justify-content: center;
 }
 
 /* Carousel padding helpers to center first/last snap elements on small screens */

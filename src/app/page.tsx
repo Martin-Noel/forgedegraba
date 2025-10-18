@@ -299,7 +299,7 @@ export default function HomePage() {
           Pour toute demande de création sur mesure ou de collaboration,
           contactez-moi :
         </p>
-        <OpenContactButton className="bg-copper text-white px-6 py-3 rounded-xl hover:bg-copper/80 transition">
+        <OpenContactButton className="btn-primary text-white px-6 py-3 rounded-xl relative z-10">
           Envoyer un message
         </OpenContactButton>
       </section>
