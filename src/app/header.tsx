@@ -48,7 +48,7 @@ export default function Header() {
 
         {/* Desktop menu */}
         <ul className="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
-          {["Savoir-faire", "Créations", "Stages", "Contact"].map((item) => (
+          {["Créations", "Stages", "Contact"].map((item) => (
             <li key={item}>
               {item != "Stages" && item != "Créations" ? (
                 <Link
@@ -106,33 +106,32 @@ export default function Header() {
                   transition={{ duration: 0.3 }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {["Savoir-faire", "Créations", "Stages", "Contact"].map(
-                    (item) =>
-                      item != "Stages" && item != "Créations" ? (
-                        <Link
-                          key={item}
-                          href={`#${item
-                            .toLowerCase()
-                            .replace("é", "e")
-                            .replace(" ", "-")}`}
-                          className="hover:text-copper"
-                          onClick={() => setMenuOpen(false)}
-                        >
-                          {item}
-                        </Link>
-                      ) : (
-                        <Link
-                          key={item}
-                          href={`/${item
-                            .toLowerCase()
-                            .replace("é", "e")
-                            .replace(" ", "-")}`}
-                          className="hover:text-copper"
-                          onClick={() => setMenuOpen(false)}
-                        >
-                          {item}
-                        </Link>
-                      )
+                  {["Créations", "Stages", "Contact"].map((item) =>
+                    item != "Stages" && item != "Créations" ? (
+                      <Link
+                        key={item}
+                        href={`#${item
+                          .toLowerCase()
+                          .replace("é", "e")
+                          .replace(" ", "-")}`}
+                        className="hover:text-copper"
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {item}
+                      </Link>
+                    ) : (
+                      <Link
+                        key={item}
+                        href={`/${item
+                          .toLowerCase()
+                          .replace("é", "e")
+                          .replace(" ", "-")}`}
+                        className="hover:text-copper"
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {item}
+                      </Link>
+                    )
                   )}
                 </motion.div>
               </motion.div>
