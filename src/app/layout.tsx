@@ -24,6 +24,14 @@ export default function RootLayout({
         <footer className="mt-20 py-10 text-center text-sm text-steel">
           © {new Date().getFullYear()} La forge de{" "}
           <span className="text-copper">Graba</span> — Tous droits réservés.
+          <div className="mt-2">
+            <a
+              href="/mentions-legales"
+              className="underline text-steel hover:text-white"
+            >
+              Mentions légales
+            </a>
+          </div>
         </footer>
       </body>
     </html>
