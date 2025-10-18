@@ -124,9 +124,7 @@ export default function HomePage() {
         {/* Background principal avec parallaxe */}
         <motion.div
           className="absolute inset-0"
-          style={{
-            y: useTransform(scrollY, [0, 500], [0, -50]),
-          }}
+          style={{ y: useTransform(scrollY, [0, 500], [0, -50]) }}
         >
           {/* TODO: descendre la photo : cf ancienne version du projet */}
           <Image
@@ -135,6 +133,7 @@ export default function HomePage() {
             fill
             priority
             className="object-cover brightness-[0.65]"
+            style={{ objectPosition: "center 40%" }}
           />
         </motion.div>
 
