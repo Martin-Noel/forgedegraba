@@ -1,6 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import creations from "../data/creations.json";
+
+type Creation = {
+  id: string;
+  title: string;
+  blade_length_cm: number;
+  handle_length_cm: number;
+  width_cm: number;
+  handle_material: string;
+  description: string;
+  image: string;
+  featured?: boolean;
+};
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HomePage() {
@@ -52,7 +65,7 @@ export default function HomePage() {
             Créations forgées à la main — entre tradition et modernité.
           </motion.p>
           <motion.a
-            href="#creations"
+            href="/creations"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 1 }}
@@ -126,20 +139,34 @@ export default function HomePage() {
         <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
           Les Créations
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
-          {["1", "2", "3"].map((i) => (
-            <div
-              key={i}
-              className="bg-[#1f1f1f] aspect-square rounded-2xl overflow-hidden relative group"
-            >
-              <Image
-                src="/forge.jpg"
-                alt={`Création ${i}`}
-                fill
-                className="object-cover group-hover:scale-110 transition"
-              />
-            </div>
-          ))}
+
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {(creations as Creation[]).filter((c: Creation) => c.featured).slice(0, 3).map((c) => (
+              <div key={c.id} className="creation-card block">
+                <div className="card-media">
+                  <Image
+                    src={c.image}
+                    alt={c.title}
+                    fill
+                    className="next-image"
+                  />
+                </div>
+                <div className="card-body">
+                  <h3 className="creation-title font-cinzel">{c.title}</h3>
+                  <p className="creation-meta">
+                    Lame {c.blade_length_cm}cm  Manche {c.handle_length_cm}cm
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <a href="/creations" className="btn-primary">
+              Voir toutes les créations
+            </a>
+          </div>
         </div>
       </section>
 

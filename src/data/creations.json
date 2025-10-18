@@ -1,0 +1,41 @@
+[
+  {
+    "id": "damas-sauvage-01",
+    "title": "Damas sauvage",
+    "blade_length_cm": 26,
+    "handle_length_cm": 16,
+    "width_cm": 6.3,
+    "handle_material": "Frêne",
+    "description": "Damas sauvage — lame damassée forgée à la main. Manche en frêne. Pièce unique.",
+    "image": "/creations/damas-sauvage-01.jpeg",
+    "featured": true,
+    "tags": ["damas", "couteau-de-cuisine"],
+    "createdAt": "2025-10-18"
+  },
+  {
+    "id": "sandwich-xc75-01",
+    "title": "Sandwich XC75 / Nikel Pur / XC100",
+    "blade_length_cm": 16,
+    "handle_length_cm": 12.7,
+    "width_cm": 7.4,
+    "handle_material": "Buis",
+    "description": "Sandwich XC75 / Nikel Pur / XC100 — lame sandwich, manche en buis. Pièce unique.",
+    "image": "/creations/sandwich-xc75-01.jpeg",
+    "featured": true,
+    "tags": ["sandwich", "xc75", "xc100"],
+    "createdAt": "2025-10-18"
+  },
+  {
+    "id": "damas-mosaique-xc100-01",
+    "title": "Damas mosaïque, tranchant rapporté XC100",
+    "blade_length_cm": 19.5,
+    "handle_length_cm": 12.7,
+    "width_cm": 6,
+    "handle_material": "Bouleau stabilisé, ébène, rondelle laiton",
+    "description": "Damas mosaïque avec tranchant rapporté XC100 — manche en bouleau stabilisé et ébène, rondelle laiton. Pièce unique.",
+    "image": "/creations/damas-mosaique-xc100-01.jpeg",
+    "featured": true,
+    "tags": ["damas", "mosaique", "xc100"],
+    "createdAt": "2025-10-18"
+  }
+]

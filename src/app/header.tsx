@@ -50,7 +50,7 @@ export default function Header() {
         <ul className="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
           {["Savoir-faire", "Créations", "Stages", "Contact"].map((item) => (
             <li key={item}>
-              {item != "Stages" ? (
+              {item != "Stages" && item != "Créations" ? (
                 <Link
                   href={`#${item
                     .toLowerCase()
@@ -61,7 +61,13 @@ export default function Header() {
                   {item}
                 </Link>
               ) : (
-                <Link href="/stages" className="hover:text-copper">
+                <Link
+                  href={`/${item
+                    .toLowerCase()
+                    .replace("é", "e")
+                    .replace(" ", "-")}`}
+                  className="hover:text-copper"
+                >
                   {item}
                 </Link>
               )}
@@ -102,7 +108,7 @@ export default function Header() {
                 >
                   {["Savoir-faire", "Créations", "Stages", "Contact"].map(
                     (item) =>
-                      item !== "Stages" ? (
+                      item != "Stages" && item != "Créations" ? (
                         <Link
                           key={item}
                           href={`#${item
@@ -117,7 +123,10 @@ export default function Header() {
                       ) : (
                         <Link
                           key={item}
-                          href="/stages"
+                          href={`/${item
+                            .toLowerCase()
+                            .replace("é", "e")
+                            .replace(" ", "-")}`}
                           className="hover:text-copper"
                           onClick={() => setMenuOpen(false)}
                         >
