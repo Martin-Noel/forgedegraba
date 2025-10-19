@@ -4,6 +4,8 @@ import Header from "./header";
 import ContactModal from "../components/ContactModal";
 import ImageModal from "../components/ImageModal";
 
+import { Analytics } from "@vercel/analytics/next";
+
 export const metadata: Metadata = {
   title: "La forge de Graba",
   description: "Couteaux artisanaux forgés à la main",
@@ -43,6 +45,7 @@ export default function RootLayout({
         <ContactModal />
         <ImageModal />
         <main>{children}</main>
+        <Analytics />
         <footer className="mt-20 py-10 text-center text-sm text-steel">
           © {new Date().getFullYear()} La forge de{" "}
           <span className="text-copper">Graba</span> — Tous droits réservés.
