@@ -32,11 +32,47 @@ const priceFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 export default function CreationsPage() {
+  // JSON-LD for Product offers
+  const productsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: (creations as Creation[]).map((c, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: c.title,
+        description: c.description,
+        image: `https://www.laforgedegraba.com${c.image}`,
+        brand: {
+          "@type": "Brand",
+          name: "La forge de Graba",
+        },
+        offers: c.price
+          ? {
+              "@type": "Offer",
+              price: c.price,
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+              seller: {
+                "@type": "Organization",
+                name: "La forge de Graba",
+              },
+            }
+          : undefined,
+      },
+    })),
+  };
+
   return (
     <main
       className="max-w-6xl mx-auto px-6 py-24"
       style={{ scrollMarginTop: 80 }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
+      />
       <header className="text-center mb-12">
         <h1 className="text-5xl font-cinzel text-copper">Les créations</h1>
         <p className="mt-4 text-gray-300 max-w-3xl mx-auto">

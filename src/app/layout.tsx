@@ -7,15 +7,31 @@ import ImageModal from "../components/ImageModal";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "La forge de Graba",
-  description: "Couteaux artisanaux forgés à la main",
+  title: "La forge de Graba | Couteaux artisanaux forgés à la main en Dordogne",
+  description: "Couteaux de cuisine artisanaux forgés à la main en Dordogne. Lames en acier carbone, manches en bois stabilisé. Stages de coutellerie sur mesure. Artisan coutelier Valentin ADAM à Tursac.",
   metadataBase: new URL("https://www.laforgedegraba.com"),
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "La forge de Graba",
-    description: "Couteaux artisanaux forgés à la main",
+    title: "La forge de Graba | Couteaux artisanaux en Dordogne",
+    description: "Couteaux de cuisine artisanaux forgés à la main. Lames en acier carbone, manches en bois stabilisé. Stages de coutellerie à Tursac, Dordogne.",
     url: "https://www.laforgedegraba.com/",
     siteName: "La forge de Graba",
     images: [
@@ -31,10 +47,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "La forge de Graba",
-    description: "Couteaux artisanaux forgés à la main",
+    title: "La forge de Graba | Couteaux artisanaux en Dordogne",
+    description: "Couteaux de cuisine artisanaux forgés à la main. Stages de coutellerie à Tursac, Dordogne.",
     images: ["https://www.laforgedegraba.com/background/bg-main.jpg"],
   },
+  keywords: [
+    "couteau artisanal",
+    "coutellerie artisanale",
+    "forge couteau",
+    "couteau forgé main",
+    "stage coutellerie",
+    "Dordogne",
+    "Tursac",
+    "acier carbone",
+    "couteau cuisine",
+    "lame damas",
+    "artisan coutelier",
+  ],
 };
 
 export default function RootLayout({
@@ -42,8 +71,59 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // JSON-LD structured data for LocalBusiness
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.laforgedegraba.com/#business",
+    name: "La forge de Graba",
+    description: "Couteaux artisanaux forgés à la main",
+    url: "https://www.laforgedegraba.com",
+    telephone: "+33627899593",
+    email: "grabaistos@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Hameau des Genêts",
+      addressLocality: "Tursac",
+      postalCode: "24620",
+      addressRegion: "Dordogne",
+      addressCountry: "FR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "45.0167",
+      longitude: "1.0333",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    image: "https://www.laforgedegraba.com/background/bg-main.jpg",
+    priceRange: "€€",
+    founder: {
+      "@type": "Person",
+      name: "Valentin ADAM",
+    },
+    sameAs: [],
+  };
+
   return (
     <html lang="fr">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`bg-neutral-950 text-white`}>
         <Header />
         <ContactModal />

@@ -1,0 +1,54 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quels types de couteaux fabriquez-vous ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Je fabrique principalement des couteaux de cuisine artisanaux : couteaux d'office, de chef, couteaux droits et lames en damas. Chaque pièce est forgée à la main avec des aciers carbone de qualité (XC75, XC100, 15N20) et des manches en bois stabilisé ou essences locales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Proposez-vous des stages de coutellerie ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, je propose plusieurs formules de stages : stage d'initiation d'une journée (240€) pour réaliser un couteau brut de forge, stage couteau droit d'une journée (320€), et stage immersion de 2 jours (440€) pour créer deux couteaux. Les stages se déroulent à Tursac en Dordogne (24) pour 1 à 2 personnes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où se trouve votre atelier ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mon atelier La forge de Graba est situé à Tursac en Dordogne (24620), au Hameau des Genêts. Les stages et visites se font sur rendez-vous."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les délais de fabrication ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les délais varient selon le type de couteau et la charge de travail. Contactez-moi directement pour connaître les disponibilités actuelles et obtenir un devis personnalisé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Utilisez-vous des aciers spécifiques ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, j'utilise principalement des aciers carbone de qualité : XC75, XC100, 15N20 pour les lames damas, et du nickel pur pour les lames sandwich. Ces aciers offrent un excellent tranchant et une durabilité exceptionnelle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment entretenir un couteau forgé main ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les couteaux en acier carbone nécessitent un entretien régulier : lavage à la main immédiatement après usage, séchage complet, et application occasionnelle d'huile alimentaire pour protéger la lame. Évitez le lave-vaisselle. Un aiguisage régulier sur pierre maintient le tranchant optimal."
+      }
+    }
+  ]
+}

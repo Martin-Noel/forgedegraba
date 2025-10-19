@@ -149,6 +149,10 @@ export default function HomePage() {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-cinzel mb-4 md:mb-6 text-white leading-tight"
           >
             La forge de <span className="text-copper">Graba</span>
+            <span className="sr-only">
+              {" "}
+              - Artisan coutelier en Dordogne, couteaux forgés à la main
+            </span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -181,21 +185,26 @@ export default function HomePage() {
         id="savoir-faire"
         className="relative max-w-6xl mx-auto py-20 px-6 overflow-hidden"
         style={{ scrollMarginTop: "60px" }}
+        aria-labelledby="savoir-faire-title"
       >
         {/* Poinçon filigrane */}
         <motion.div
           className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
           style={{ y: yStampSavoir }}
+          aria-hidden="true"
         >
           <Image
             src={stamp_white}
-            alt="Poinçon de La forge de Graba - filigrane décoratif"
+            alt=""
             fill
             className="object-contain"
           />
         </motion.div>
 
-        <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
+        <h2
+          id="savoir-faire-title"
+          className="text-5xl font-cinzel text-center mb-10 text-copper"
+        >
           Le Savoir-Faire
         </h2>
         <div className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto space-y-4">
@@ -229,8 +238,12 @@ export default function HomePage() {
         id="creations"
         className="py-20 bg-[#141414]"
         style={{ scrollMarginTop: "60px" }}
+        aria-labelledby="creations-title"
       >
-        <h2 className="text-5xl font-cinzel text-center mb-10 text-copper">
+        <h2
+          id="creations-title"
+          className="text-5xl font-cinzel text-center mb-10 text-copper"
+        >
           Les Créations
         </h2>
 
@@ -281,21 +294,28 @@ export default function HomePage() {
       <section
         id="contact"
         className="relative max-w-3xl mx-auto py-20 px-6 text-center overflow-hidden"
+        aria-labelledby="contact-title"
       >
         {/* Poinçon filigrane */}
         <motion.div
           className="absolute top-1/2 left-1/2 w-72 h-72 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none"
           style={{ y: yStampContact }}
+          aria-hidden="true"
         >
           <Image
             src={stamp_white}
-            alt="Poinçon de La forge de Graba"
+            alt=""
             fill
             className="object-contain"
           />
         </motion.div>
 
-        <h2 className="text-5xl font-cinzel mb-10 text-copper">Contact</h2>
+        <h2
+          id="contact-title"
+          className="text-5xl font-cinzel mb-10 text-copper"
+        >
+          Contact
+        </h2>
         <p className="text-gray-300 mb-6">
           Pour toute demande d&apos;information, réservation de stage et autre,
           contactez-moi :

@@ -12,11 +12,109 @@ export const metadata: Metadata = {
 };
 
 export default function StagesPage() {
+  // JSON-LD for Course offerings
+  const coursesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@type": "Course",
+          name: "Stage d'initiation à la coutellerie",
+          description:
+            "Une journée immersive pour découvrir la forge et façonner votre propre couteau brut de forge. Présentation du matériel, découverte des outils et gestes fondamentaux.",
+          provider: {
+            "@type": "Organization",
+            name: "La forge de Graba",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Hameau des Genêts",
+              addressLocality: "Tursac",
+              postalCode: "24620",
+              addressCountry: "FR",
+            },
+          },
+          offers: {
+            "@type": "Offer",
+            price: "240",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "onsite",
+            duration: "P1D",
+            instructor: {
+              "@type": "Person",
+              name: "Valentin ADAM",
+            },
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@type": "Course",
+          name: "Stage d'initiation à la coutellerie 2 - Couteau droit",
+          description:
+            "Réalisation complète d'un couteau droit : forge de la lame, façonnage du manche en bois, finitions et aiguisage. Pour 1 à 2 personnes.",
+          provider: {
+            "@type": "Organization",
+            name: "La forge de Graba",
+          },
+          offers: {
+            "@type": "Offer",
+            price: "320",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "onsite",
+            duration: "P1D",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        item: {
+          "@type": "Course",
+          name: "Stage immersion individuel",
+          description:
+            "Deux jours pour plonger dans l'univers de la coutellerie artisanale. Réalisation d'un couteau brut de forge et d'un couteau de cuisine personnalisé.",
+          provider: {
+            "@type": "Organization",
+            name: "La forge de Graba",
+          },
+          offers: {
+            "@type": "Offer",
+            price: "440",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "onsite",
+            duration: "P2D",
+          },
+        },
+      },
+    ],
+  };
+
   return (
     <main
       className="max-w-6xl mx-auto px-6 py-24"
       style={{ scrollMarginTop: 80 }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(coursesJsonLd) }}
+      />
       <header className="text-center mb-12">
         <h1 className="text-5xl font-cinzel text-copper">Stages</h1>
         <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
