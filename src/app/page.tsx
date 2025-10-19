@@ -127,16 +127,18 @@ export default function HomePage() {
           className="absolute inset-0"
           style={{ y: useTransform(scrollY, [0, 500], [0, -50]) }}
         >
-          {/* TODO: descendre la photo : cf ancienne version du projet */}
           <Image
             src="/background/bg-main.jpg"
             alt="Forgeron à l'œuvre"
             fill
             priority
-            className="object-cover brightness-[0.65]"
-            style={{ objectPosition: "center 40%" }}
+            className="object-cover brightness-[1]"
+            style={{ objectPosition: "center 35%" }}
           />
         </motion.div>
+
+        {/* Overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
 
         {/* Contenu Hero */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
@@ -144,24 +146,30 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-cinzel mb-6 text-white"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-cinzel mb-4 md:mb-6 text-white leading-tight"
           >
-            Le feu façonne l’âme du métal
+            La forge de <span className="text-copper">Graba</span>
           </motion.h1>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-lg md:text-2xl font-light mb-8 text-gray-200 max-w-2xl"
+            className="text-xl md:text-2xl lg:text-3xl font-light mb-8 md:mb-10 text-gray-100 max-w-4xl lg:max-w-5xl leading-relaxed tracking-wide"
           >
-            Créations forgées à la main — entre tradition et modernité.
-          </motion.p>
+            <p className="mb-24 md:mb-4">
+              Bienvenue dans mon atelier de coutellerie artisanale.
+            </p>
+            <p>
+              Ici, chaque couteau est forgé à la main avec passion, précision et
+              savoir-faire.
+            </p>
+          </motion.div>
           <motion.a
             href="/creations"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 1 }}
-            className="btn-primary text-lg"
+            className="btn-primary text-lg md:text-xl px-8 py-4 shadow-lg hover:shadow-xl transition-shadow"
           >
             Découvrir les créations
           </motion.a>
@@ -191,12 +199,6 @@ export default function HomePage() {
           Le Savoir-Faire
         </h2>
         <div className="text-lg leading-relaxed text-center text-gray-300 max-w-3xl mx-auto space-y-4">
-          <p>
-            Bienvenue dans mon atelier de coutellerie artisanale. Ici, chaque
-            couteau de cuisine est forgé à la main avec passion, précision et
-            savoir-faire.
-          </p>
-
           <p>
             Ancien cuisinier professionnel, c&apos;est en cuisine que j&apos;ai
             compris l&apos;importance d&apos;un bon couteau. Mon objectif :
