@@ -304,7 +304,7 @@ export default function ImageModal() {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute right-2 top-2 text-white bg-black/40 rounded-full p-2 z-20"
+              className="absolute cursor-pointer text-copper right-2 top-2 text-white bg-black/40 rounded-full p-2 z-20"
               aria-label="Fermer"
               onClick={() => setOpen(false)}
             >

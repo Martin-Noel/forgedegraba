@@ -110,7 +110,7 @@ button {
   width: 100%;
   min-height: 220px; /* ensures a consistent card size while allowing variable images */
   position: relative;
-  background: #111;
+  background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,11 +125,12 @@ button {
 .rotated-90 {
   transform: translate(-50%, -50%) rotate(90deg) !important;
   transform-origin: center center !important;
-  top: 50% !important;
+  top: 35% !important;
   left: 50% !important;
   width: 100% !important;
-  height: auto !important;
 }
+
+
 
 .creation-card .card-body {
   padding: 1rem;
