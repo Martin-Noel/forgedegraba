@@ -7,6 +7,28 @@ import ImageModal from "../components/ImageModal";
 export const metadata: Metadata = {
   title: "La forge de Graba",
   description: "Couteaux artisanaux forgés à la main",
+  openGraph: {
+    title: "La forge de Graba",
+    description: "Couteaux artisanaux forgés à la main",
+    url: "https://www.laforgedegraba.com/",
+    siteName: "La forge de Graba",
+    images: [
+      {
+        url: "https://www.laforgedegraba.com/background/bg-main.jpg",
+        width: 1200,
+        height: 630,
+        alt: "La forge de Graba - artisan coutelier",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "La forge de Graba",
+    description: "Couteaux artisanaux forgés à la main",
+    images: ["https://www.laforgedegraba.com/background/bg-main.jpg"],
+  },
 };
 
 export default function RootLayout({
