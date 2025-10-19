@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import creations from "../../data/creations.json";
 import OpenContactButton from "../../../src/components/OpenContactButton";
 import ImagePreview from "../../../src/components/ImagePreview";
+
+export const metadata: Metadata = {
+  title: "Créations — Couteaux artisanaux forgés | La forge de Graba",
+  description:
+    "Découvrez nos couteaux de cuisine artisanaux forgés à la main : lames en acier carbone, manches en bois stabilisé. Pièces uniques pour professionnels et passionnés.",
+};
 
 type Creation = {
   id: string;

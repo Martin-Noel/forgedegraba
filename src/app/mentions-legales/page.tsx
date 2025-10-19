@@ -1,6 +1,9 @@
-export const metadata = {
-  title: "Mentions légales - La forge de graba",
-  description: "Mentions légales et informations légales de La forge de graba",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mentions légales | La forge de Graba",
+  description:
+    "Mentions légales, informations sur l'éditeur, l'hébergement et la protection des données personnelles de La forge de Graba.",
 };
 
 export default function MentionsLegales() {
@@ -20,16 +23,14 @@ export default function MentionsLegales() {
               Le site &quot;La forge de graba&quot; est édité par :
             </p>
             <ul className="mt-2 list-none text-sm text-gray-300">
-              <li>Nom / Enseigne : Martin NOËL</li>
-              <li>Responsable de la publication : Martin NOËL</li>
-              <li>Adresse : 11 Uhaldeko Bidea 64250 Louhossoa</li>
+              <li>Nom / Enseigne : Valentin ADAM - La forge de Graba</li>
+              <li>Responsable de la publication : Valentin ADAM</li>
+              <li>Adresse : Hameau des Genêts, 24620 Tursac</li>
+              <li>Téléphone : 06 27 89 95 93</li>
               <li>
                 Email :{" "}
-                <a
-                  href="mailto:martin.noel.dev@gmail.com"
-                  className="underline"
-                >
-                  martin.noel.dev@gmail.com
+                <a href="mailto:grabaistos@gmail.com" className="underline">
+                  grabaistos@gmail.com
                 </a>
               </li>
             </ul>

@@ -1,0 +1,38 @@
+# La forge de Graba
+
+> Couteaux artisanaux forgés à la main | Stages de coutellerie en Dordogne
+
+## Site officiel
+- URL: https://www.laforgedegraba.com
+- Artisan coutelier: Valentin Adam
+- Localisation: Tursac, Dordogne (24)
+
+## Services
+- Couteaux de cuisine artisanaux forgés (lames acier carbone, manches bois stabilisé)
+- Stages de coutellerie (initiation et immersion)
+- Créations sur mesure pour professionnels et particuliers
+
+## Navigation
+- [Accueil](https://www.laforgedegraba.com)
+- [Créations](https://www.laforgedegraba.com/creations)
+- [Stages](https://www.laforgedegraba.com/stages)
+- [Contact](https://www.laforgedegraba.com#contact)
+
+## À propos
+La forge de Graba propose des couteaux forgés à la main avec passion et savoir-faire. Ancien cuisinier professionnel, Valentin Adam sélectionne des aciers carbone de qualité et façonne chaque manche artisanalement pour offrir des outils performants, durables et esthétiques.
+
+## Contact
+Email: grabaistos@gmail.com
+Téléphone: 06 27 89 95 93
+Adresse: Hameau des Genêts, 24620 Tursac
+
+## Technologies
+- Next.js 15 (App Router)
+- React 18
+- TypeScript
+- Tailwind CSS
+- EmailJS (formulaire de contact)
+- Hébergement: Vercel
+
+---
+*Dernière mise à jour: Octobre 2025*

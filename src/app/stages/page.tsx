@@ -3,9 +3,9 @@ import Image from "next/image";
 import OpenContactButton from "../../../src/components/OpenContactButton";
 
 export const metadata: Metadata = {
-  title: "Stages — La forge de graba",
+  title: "Stages de coutellerie artisanale | La forge de Graba",
   description:
-    "Stages d'initiation et immersion en coutellerie — forge, trempe, manche, finitions.",
+    "Apprenez la forge de couteaux en stage d'initiation ou d'immersion : trempe, montage de manche, finitions. Petits groupes, pédagogie pratique et sécurisée en Dordogne.",
 };
 
 export default function StagesPage() {
