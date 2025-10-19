@@ -193,12 +193,7 @@ export default function HomePage() {
           style={{ y: yStampSavoir }}
           aria-hidden="true"
         >
-          <Image
-            src={stamp_white}
-            alt=""
-            fill
-            className="object-contain"
-          />
+          <Image src={stamp_white} alt="" fill className="object-contain" />
         </motion.div>
 
         <h2
@@ -302,12 +297,7 @@ export default function HomePage() {
           style={{ y: yStampContact }}
           aria-hidden="true"
         >
-          <Image
-            src={stamp_white}
-            alt=""
-            fill
-            className="object-contain"
-          />
+          <Image src={stamp_white} alt="" fill className="object-contain" />
         </motion.div>
 
         <h2

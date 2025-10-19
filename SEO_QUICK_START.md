@@ -3,6 +3,7 @@
 ## 🚨 URGENT - À faire aujourd'hui
 
 ### 1. Google Search Console (15 min)
+
 - [ ] Créer compte: https://search.google.com/search-console
 - [ ] Ajouter propriété: www.laforgedegraba.com
 - [ ] Vérifier propriété (méthode DNS ou fichier HTML)
@@ -10,6 +11,7 @@
 - [ ] Vérifier indexation des 4 pages
 
 ### 2. Google My Business (30 min)
+
 - [ ] Créer fiche: https://business.google.com
 - [ ] Informations:
   - Nom: La forge de Graba
@@ -23,6 +25,7 @@
 - [ ] Description (750 caractères max)
 
 ### 3. Vérifier déploiement Vercel (5 min)
+
 - [ ] Variables d'environnement EmailJS configurées
 - [ ] Build successful
 - [ ] Site accessible en HTTPS
@@ -33,6 +36,7 @@
 ## 📅 CETTE SEMAINE (Jours 1-7)
 
 ### Validation technique
+
 - [ ] Tester PageSpeed Insights: https://pagespeed.web.dev
   - Score mobile > 90
   - Score desktop > 95
@@ -44,6 +48,7 @@
 - [ ] Vérifier tous les liens (internes + externes)
 
 ### Premiers backlinks
+
 - [ ] Inscription annuaire artisans Dordogne
 - [ ] Contact Office Tourisme Périgord
 - [ ] Inscription Pages Jaunes (gratuit)
@@ -54,12 +59,14 @@
 ## 📈 CE MOIS-CI (Jours 8-30)
 
 ### Contenu
+
 - [ ] Rédiger 1ère FAQ visible sur site (basée sur faq-schema.json)
 - [ ] Créer page "À propos" / "L'artisan"
 - [ ] Optimiser descriptions produits (plus détaillées)
 - [ ] Ajouter témoignages clients (si disponibles)
 
 ### Réseaux sociaux
+
 - [ ] Créer page Facebook Business
 - [ ] Créer compte Instagram professionnel
 - [ ] Poster 3-5 photos créations avec hashtags
@@ -67,6 +74,7 @@
 - [ ] Lier réseaux sociaux dans metadata (sameAs)
 
 ### Avis et réputation
+
 - [ ] Demander 5 premiers avis Google (anciens clients/stagiaires)
 - [ ] Répondre à tous les avis
 - [ ] Créer template email demande d'avis
@@ -76,6 +84,7 @@
 ## 🎯 TRIMESTRE 1 (3 mois)
 
 ### Blog (2 articles/mois)
+
 - [ ] Article 1: "Choisir son acier: XC75 vs XC100 vs Damas"
 - [ ] Article 2: "Les étapes de forge d'un couteau"
 - [ ] Article 3: "Entretenir son couteau en acier carbone"
@@ -84,6 +93,7 @@
 - [ ] Article 6: "Découverte de l'atelier en Dordogne"
 
 ### Vidéo
+
 - [ ] Vidéo 1: Présentation atelier (1-2 min)
 - [ ] Vidéo 2: Time-lapse forge (30s-1min)
 - [ ] Vidéo 3: Témoignage stagiaire (1 min)
@@ -91,6 +101,7 @@
 - [ ] Intégrer vidéos sur site
 
 ### Backlinks qualité
+
 - [ ] Article presse locale (Sud Ouest, La Dordogne Libre)
 - [ ] Contact blogs artisanat/coutellerie
 - [ ] Partenariats écoles hôtelières région
@@ -101,45 +112,51 @@
 ## 📊 MÉTRIQUES À SUIVRE (hebdomadaire)
 
 ### Google Search Console
-- Impressions: ___
-- Clics: ___
-- CTR: ___%
-- Position moyenne: ___
+
+- Impressions: \_\_\_
+- Clics: \_\_\_
+- CTR: \_\_\_%
+- Position moyenne: \_\_\_
 - Top requêtes:
-  1. ________________
-  2. ________________
-  3. ________________
+  1. ***
+  2. ***
+  3. ***
 
 ### Google Analytics / Vercel
-- Visiteurs uniques: ___
-- Pages vues: ___
-- Taux rebond: ___%
-- Durée moyenne: ___
-- Conversions (formulaire): ___
+
+- Visiteurs uniques: \_\_\_
+- Pages vues: \_\_\_
+- Taux rebond: \_\_\_%
+- Durée moyenne: \_\_\_
+- Conversions (formulaire): \_\_\_
 
 ### Google My Business
-- Vues fiche: ___
-- Clics site web: ___
-- Demandes d'itinéraire: ___
-- Appels téléphone: ___
-- Avis: ___ (note moyenne: ___)
+
+- Vues fiche: \_\_\_
+- Clics site web: \_\_\_
+- Demandes d'itinéraire: \_\_\_
+- Appels téléphone: \_\_\_
+- Avis: **_ (note moyenne: _**)
 
 ---
 
 ## 🔧 OUTILS ESSENTIELS
 
 ### SEO
+
 - Google Search Console: https://search.google.com/search-console
 - Google Analytics: https://analytics.google.com
 - PageSpeed Insights: https://pagespeed.web.dev
 - Rich Results Test: https://search.google.com/test/rich-results
 
 ### Monitoring
+
 - Vercel Analytics (déjà intégré)
 - Google My Business Insights
 - Ubersuggest (keywords): https://neilpatel.com/ubersuggest
 
 ### Gestion
+
 - Google My Business: https://business.google.com
 - EmailJS Dashboard: https://dashboard.emailjs.com
 
@@ -148,18 +165,21 @@
 ## 💡 MOTS-CLÉS À CIBLER
 
 ### Priorité 1 (faible concurrence, local)
+
 - "coutelier Tursac"
 - "stage coutellerie Dordogne"
 - "forge couteau Périgord"
 - "artisan coutelier 24"
 
 ### Priorité 2 (moyenne concurrence)
+
 - "couteau artisanal Dordogne"
 - "stage forge couteau"
 - "coutellerie artisanale Périgord"
 - "couteau forgé main France"
 
 ### Priorité 3 (longue traîne)
+
 - "apprendre à forger un couteau Dordogne"
 - "stage initiation coutellerie Tursac"
 - "acheter couteau damas artisanal"
@@ -187,14 +207,17 @@ Avant de publier/mettre à jour:
 ## 📞 CONTACTS UTILES
 
 **Développeur:**
+
 - Martin Noel
 - martin.noel.dev@gmail.com
 
 **Support Google:**
+
 - Search Console: aide en ligne
 - My Business: support chat/email
 
 **Annuaires prioritaires:**
+
 - Pages Jaunes: https://www.pagesjaunes.fr/pro
 - 118712: https://www.118712.fr
 - Artisans.fr: https://www.artisans.fr

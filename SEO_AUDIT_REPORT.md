@@ -1,4 +1,5 @@
 # Rapport d'audit SEO complet - La forge de Graba
+
 **Date:** 19 octobre 2025  
 **Domaine:** https://www.laforgedegraba.com
 
@@ -7,6 +8,7 @@
 ## ✅ Optimisations techniques implémentées
 
 ### 1. **Métadonnées et balises méta** ✓
+
 - ✅ Titre optimisé avec mots-clés : "La forge de Graba | Couteaux artisanaux forgés à la main en Dordogne"
 - ✅ Description enrichie (160 caractères) avec mots-clés géolocalisés
 - ✅ Balises Open Graph complètes pour Facebook/LinkedIn
@@ -18,6 +20,7 @@
 - ✅ Robots meta configuré (index, follow, max-image-preview: large)
 
 ### 2. **Structure des titres (H1-H6)** ✓
+
 - ✅ **Homepage:** H1 unique "La forge de Graba" avec texte caché SEO
 - ✅ **Créations:** H1 "Les créations", H3 pour chaque produit
 - ✅ **Stages:** H1 "Stages", H2 pour chaque stage, H3/H4 pour sous-sections
@@ -26,6 +29,7 @@
 - ✅ Aucun duplicate H1 (corrigé : header logo changé de h1 à div)
 
 ### 3. **Images et optimisation** ✓
+
 - ✅ Tous les attributs alt descriptifs ajoutés
 - ✅ Next.js Image component utilisé (lazy loading automatique)
 - ✅ Formats modernes configurés (AVIF, WebP)
@@ -35,12 +39,14 @@
 - ✅ Dimensions explicites pour éviter le layout shift
 
 **Images optimisées:**
+
 - Hero background: "Forgeron à l'œuvre"
 - Logo header: "Logo La forge de Graba - poinçon artisanal"
 - Stamps: "Poinçon de La forge de Graba"
 - Créations: titres descriptifs depuis JSON
 
 ### 4. **HTML sémantique** ✓
+
 - ✅ Balises `<section>` avec id et aria-labelledby
 - ✅ Balises `<article>` pour les cartes créations/stages
 - ✅ Balises `<header>`, `<main>`, `<footer>`, `<nav>`
@@ -49,19 +55,21 @@
 - ✅ Rôles accessibles (role="list", role="listitem")
 
 ### 5. **Données structurées (JSON-LD)** ✓
+
 - ✅ **LocalBusiness** (layout.tsx)
   - Nom, description, URL, téléphone, email
   - Adresse complète (Hameau des Genêts, 24620 Tursac)
   - Coordonnées GPS (45.0167, 1.0333)
   - Horaires d'ouverture
   - Fondateur: Valentin ADAM
-  
 - ✅ **Product** (creations/page.tsx)
+
   - ItemList avec tous les couteaux
   - Prix, disponibilité, marque
   - Images, descriptions
 
 - ✅ **Course** (stages/page.tsx)
+
   - 3 stages avec prix, durée, description
   - Informations instructeur
   - Mode: onsite (présentiel)
@@ -71,20 +79,20 @@
   - Couvre: types de couteaux, stages, localisation, délais, aciers, entretien
 
 ### 6. **Fichiers SEO essentiels** ✓
-- ✅ **sitemap.xml** 
+
+- ✅ **sitemap.xml**
   - 4 URLs avec lastmod, changefreq, priority
   - Format XML valide
-  
 - ✅ **robots.txt**
   - Allow: /
   - Référence au sitemap
-  
 - ✅ **llm.txt**
   - Description pour IA/LLM
   - Contact complet (email, téléphone)
   - Services et technologies
 
 ### 7. **Liens internes** ✓
+
 - ✅ Navigation principale avec liens sémantiques
 - ✅ Ancres descriptives ("Découvrir les créations", "Voir toutes les créations")
 - ✅ Footer avec lien mentions légales
@@ -92,6 +100,7 @@
 - ✅ Liens hover states pour UX
 
 ### 8. **Performance et Core Web Vitals** ✓
+
 - ✅ Next.js 15 avec optimisations automatiques
 - ✅ Vercel Analytics intégré (@vercel/analytics)
 - ✅ Fonts preload via Google Fonts (Cinzel, Playfair Display)
@@ -101,6 +110,7 @@
 - ✅ CSS Tailwind optimisé (purge automatique)
 
 ### 9. **Mobile-first et responsive** ✓
+
 - ✅ Viewport configuré correctement
 - ✅ Design responsive (Tailwind breakpoints)
 - ✅ Touch-friendly (boutons 44x44px minimum)
@@ -109,6 +119,7 @@
 - ✅ Modals fullscreen sur mobile
 
 ### 10. **Accessibilité (a11y)** ✓
+
 - ✅ Contraste couleurs suffisant (WCAG AA)
 - ✅ Navigation clavier (focus-visible)
 - ✅ Texte sr-only pour lecteurs d'écran
@@ -121,6 +132,7 @@
 ## 📊 Mots-clés ciblés
 
 ### Primaires
+
 - couteau artisanal
 - coutellerie artisanale
 - couteau forgé main
@@ -128,6 +140,7 @@
 - artisan coutelier Dordogne
 
 ### Secondaires
+
 - stage coutellerie Dordogne
 - couteau cuisine artisanal
 - lame damas
@@ -136,6 +149,7 @@
 - coutelier Périgord
 
 ### Longue traîne
+
 - "stage initiation coutellerie Dordogne"
 - "couteau forgé acier carbone"
 - "artisan coutelier Tursac 24"
@@ -147,12 +161,15 @@
 ## 🎯 Recommandations supplémentaires
 
 ### Court terme (1-2 semaines)
+
 1. **Google My Business**
+
    - Créer/optimiser la fiche GMB
    - Ajouter photos atelier, créations
    - Demander avis clients
 
 2. **Google Search Console**
+
    - Soumettre sitemap.xml
    - Vérifier indexation
    - Monitorer requêtes
@@ -163,13 +180,16 @@
    - Associations couteliers
 
 ### Moyen terme (1-3 mois)
+
 4. **Blog/Actualités**
+
    - Créer section blog
    - Articles techniques (forge, trempe, aciers)
    - Storytelling créations
    - SEO local (événements Dordogne)
 
 5. **Vidéos**
+
    - Processus forge (YouTube)
    - Témoignages stagiaires
    - Présentation atelier
@@ -182,12 +202,15 @@
    - Liens dans metadata (sameAs)
 
 ### Long terme (3-6 mois)
+
 7. **Avis et témoignages**
+
    - Section avis clients
    - Schema Review markup
    - Rich snippets étoiles
 
 8. **E-commerce**
+
    - Boutique en ligne
    - Paiement sécurisé
    - Schema Product Offer
@@ -202,6 +225,7 @@
 ## 🔍 Checklist validation SEO
 
 ### On-page SEO
+
 - [x] Titre unique par page (50-60 caractères)
 - [x] Meta description (150-160 caractères)
 - [x] URL lisibles et cohérentes
@@ -214,6 +238,7 @@
 - [x] HTTPS (Vercel)
 
 ### Technical SEO
+
 - [x] Sitemap.xml
 - [x] Robots.txt
 - [x] Canonical URLs
@@ -226,6 +251,7 @@
 - [x] CDN (Vercel Edge)
 
 ### Content SEO
+
 - [x] Contenu unique et original
 - [x] Mots-clés naturellement intégrés
 - [x] Longueur suffisante (>300 mots/page)
@@ -235,6 +261,7 @@
 - [ ] FAQ section visible (JSON-LD créé)
 
 ### Local SEO
+
 - [x] Adresse complète
 - [x] Téléphone local
 - [x] Ville/région dans contenu
@@ -248,6 +275,7 @@
 ## 📈 Métriques à suivre
 
 ### Google Search Console
+
 - Impressions
 - Clics
 - CTR moyen
@@ -256,6 +284,7 @@
 - Erreurs d'exploration
 
 ### Google Analytics / Vercel Analytics
+
 - Sessions
 - Taux de rebond
 - Durée moyenne session
@@ -264,11 +293,13 @@
 - Conversions (formulaire contact)
 
 ### Core Web Vitals
+
 - **LCP** (Largest Contentful Paint) < 2.5s
 - **FID** (First Input Delay) < 100ms
 - **CLS** (Cumulative Layout Shift) < 0.1
 
 ### PageSpeed Insights
+
 - Score mobile > 90
 - Score desktop > 95
 
@@ -279,22 +310,26 @@
 **Indexation initiale:** 1-7 jours après soumission sitemap
 
 **Positionnement initial (page 5-10):** 2-4 semaines
+
 - Mots-clés longue traîne
 - Requêtes géolocalisées spécifiques
 
 **Positionnement page 1-3:** 2-4 mois
+
 - Avec backlinks de qualité
 - Contenu régulier (blog)
 - Avis Google positifs
 - Optimisations continues
 
 **Top 3 résultats:** 6-12 mois
+
 - Autorité domaine établie
 - Nombreux backlinks locaux
 - Contenu expert régulier
 - Engagement social media
 
 **Facteurs accélérateurs:**
+
 - Google My Business optimisé
 - Avis clients 5 étoiles
 - Backlinks annuaires artisans
@@ -306,22 +341,26 @@
 ## ✅ Actions immédiates recommandées
 
 1. **Soumettre sitemap à Google Search Console**
+
    ```
    https://search.google.com/search-console
    ```
 
 2. **Créer Google My Business**
+
    - Photos atelier (min 10)
    - Heures d'ouverture
    - Services (stages, vente)
    - Demander premiers avis
 
 3. **Vérifier indexation**
+
    ```
    site:laforgedegraba.com
    ```
 
 4. **Tester vitesse**
+
    - PageSpeed Insights
    - GTmetrix
    - WebPageTest
