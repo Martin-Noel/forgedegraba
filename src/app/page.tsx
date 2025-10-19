@@ -189,7 +189,7 @@ export default function HomePage() {
         >
           <Image
             src={stamp_white}
-            alt="stamp_savoir_faire"
+            alt="Poinçon de La forge de Graba - filigrane décoratif"
             fill
             className="object-contain"
           />
@@ -289,7 +289,7 @@ export default function HomePage() {
         >
           <Image
             src={stamp_white}
-            alt="stamp_contact"
+            alt="Poinçon de La forge de Graba"
             fill
             className="object-contain"
           />

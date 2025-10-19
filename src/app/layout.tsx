@@ -9,6 +9,10 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "La forge de Graba",
   description: "Couteaux artisanaux forgés à la main",
+  metadataBase: new URL("https://www.laforgedegraba.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "La forge de Graba",
     description: "Couteaux artisanaux forgés à la main",

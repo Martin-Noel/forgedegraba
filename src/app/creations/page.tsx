@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Créations — Couteaux artisanaux forgés | La forge de Graba",
   description:
     "Découvrez nos couteaux de cuisine artisanaux forgés à la main : lames en acier carbone, manches en bois stabilisé. Pièces uniques pour professionnels et passionnés.",
+  alternates: {
+    canonical: "/creations",
+  },
 };
 
 type Creation = {

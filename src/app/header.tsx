@@ -101,14 +101,14 @@ export default function Header() {
           <div className="relative w-10 h-10 md:w-14 md:h-14">
             <Image
               src="/stamps/stamp_white.png"
-              alt="stamp"
+              alt="Logo La forge de Graba - poinçon artisanal"
               fill
               className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </div>
-          <h1 className="text-xl md:text-2xl font-cinzel tracking-wide group-hover:text-copper transition-colors">
+          <div className="text-xl md:text-2xl font-cinzel tracking-wide group-hover:text-copper transition-colors">
             La forge de <span className="text-copper">Graba</span>
-          </h1>
+          </div>
         </Link>
 
         {/* Desktop menu */}

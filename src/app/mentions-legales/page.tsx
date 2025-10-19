@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Mentions légales | La forge de Graba",
   description:
     "Mentions légales, informations sur l'éditeur, l'hébergement et la protection des données personnelles de La forge de Graba.",
+  alternates: {
+    canonical: "/mentions-legales",
+  },
 };
 
 export default function MentionsLegales() {

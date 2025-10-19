@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Stages de coutellerie artisanale | La forge de Graba",
   description:
     "Apprenez la forge de couteaux en stage d'initiation ou d'immersion : trempe, montage de manche, finitions. Petits groupes, pédagogie pratique et sécurisée en Dordogne.",
+  alternates: {
+    canonical: "/stages",
+  },
 };
 
 export default function StagesPage() {
@@ -29,7 +32,7 @@ export default function StagesPage() {
           <div className="w-20 h-20 relative opacity-80 mx-auto">
             <Image
               src="/stamps/stamp_white.png"
-              alt="stamp"
+              alt="Poinçon de La forge de Graba"
               fill
               className="object-contain"
             />
@@ -84,7 +87,7 @@ export default function StagesPage() {
           <div className="w-20 h-20 relative opacity-80 mx-auto">
             <Image
               src="/stamps/stamp_white.png"
-              alt="stamp"
+              alt="Poinçon de La forge de Graba"
               fill
               className="object-contain"
             />
@@ -139,7 +142,7 @@ export default function StagesPage() {
           <div className="w-20 h-20 relative opacity-80 mx-auto">
             <Image
               src="/stamps/stamp_white.png"
-              alt="stamp"
+              alt="Poinçon de La forge de Graba"
               fill
               className="object-contain"
             />
