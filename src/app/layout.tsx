@@ -5,7 +5,7 @@ import ContactModal from "../components/ContactModal";
 import ImageModal from "../components/ImageModal";
 
 export const metadata: Metadata = {
-  title: "La forge de graba",
+  title: "La forge de Graba",
   description: "Couteaux artisanaux forgés à la main",
 };
 

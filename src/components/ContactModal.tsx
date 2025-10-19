@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { createPortal } from "react-dom";
 
 export default function ContactModal() {
@@ -9,6 +10,17 @@ export default function ContactModal() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<
+    { type: "success"; msg: string } | { type: "error"; msg: string } | null
+  >(null);
+
+  // EmailJS configuration uses these env variables:
+  // NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  // Set them in your .env.local file (see project root)
+  const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -76,25 +88,72 @@ export default function ContactModal() {
     };
   }, [open]);
 
-  const close = () => setOpen(false);
-
-  const submit = (e?: React.FormEvent) => {
-    e?.preventDefault();
-    // Build mailto link (fallback without backend)
-    const to = "contact@forge-artisanale.fr";
-    const s = subject || "Demande depuis le site";
-    const bodyLines = [
-      name ? `Nom: ${name}` : null,
-      email ? `Email: ${email}` : null,
-      "",
-      message || "",
-    ].filter(Boolean);
-    const body = encodeURIComponent(bodyLines.join("\n"));
-    const mailto = `mailto:${to}?subject=${encodeURIComponent(s)}&body=${body}`;
-    // Open user's mail client
-    window.location.href = mailto;
-    // close modal after launching
+  const close = () => {
     setOpen(false);
+    setTimeout(() => {
+      setStatus(null);
+      setSending(false);
+    }, 200);
+  };
+
+  const submit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setStatus(null);
+    // If EmailJS not configured, fallback to mailto
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      const to = "contact@forge-artisanale.fr";
+      const s = subject || "Demande depuis le site";
+      const bodyLines = [
+        name ? `Nom: ${name}` : null,
+        email ? `Email: ${email}` : null,
+        "",
+        message || "",
+      ].filter(Boolean);
+      const body = encodeURIComponent(bodyLines.join("\n"));
+      const mailto = `mailto:${to}?subject=${encodeURIComponent(
+        s
+      )}&body=${body}`;
+      window.location.href = mailto;
+      setOpen(false);
+      return;
+    }
+
+    try {
+      setSending(true);
+      // Initialize once per session (safe to call multiple times)
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      type TemplateParams = {
+        subject: string;
+        from_name: string;
+        reply_to: string;
+        message: string;
+      };
+      const templateParams: TemplateParams = {
+        subject: subject || "Demande depuis le site",
+        from_name: name || "",
+        reply_to: email || "",
+        message: message,
+      };
+      // service, template, params
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+      setStatus({ type: "success", msg: "Message envoyé avec succès." });
+      // Optionally reset fields
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      console.error("EmailJS error", err);
+      setStatus({
+        type: "error",
+        msg: "Échec de l'envoi. Réessayez ou utilisez votre client mail.",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   if (!open) return null;
@@ -120,7 +179,7 @@ export default function ContactModal() {
         </button>
 
         <h3 className="text-2xl font-cinzel mb-2">Contact</h3>
-        <p className="text-sm text-gray-300 mb-4">
+        <p className="text-sm text-gray-300 mb-2">
           Envoyez votre demande, je vous répondrai rapidement.
         </p>
 
@@ -134,17 +193,19 @@ export default function ContactModal() {
 
           <input
             className="w-full bg-neutral-800 border border-neutral-700 rounded px-3 py-2"
-            placeholder="Votre nom (optionnel)"
+            placeholder="Votre nom"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
 
           <input
             className="w-full bg-neutral-800 border border-neutral-700 rounded px-3 py-2"
-            placeholder="Votre email (optionnel)"
+            placeholder="Votre email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
+            required
           />
 
           <textarea
@@ -155,20 +216,25 @@ export default function ContactModal() {
             required
           />
 
-          <div className="flex items-center justify-between">
-            <button type="submit" className="btn-primary cursor-pointer">
-              Envoyer (ouvrir mon client mail)
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                // fallback: copy email to clipboard
-                navigator.clipboard?.writeText("contact@forge-artisanale.fr");
-                close();
-              }}
-              className="text-sm text-gray-300 underline cursor-pointer"
+          <div className="flex items-center justify-between mt-2">
+            <div
+              className={`text-sm min-h-[1.25rem] ${
+                status
+                  ? status.type === "success"
+                    ? "text-green-400"
+                    : "text-red-400"
+                  : "text-transparent"
+              }`}
+              aria-live="polite"
             >
-              Copier l&apos;email
+              {status?.msg}
+            </div>
+            <button
+              type="submit"
+              className="btn-primary cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              disabled={sending}
+            >
+              {sending ? "Envoi..." : "Envoyer"}
             </button>
           </div>
         </form>

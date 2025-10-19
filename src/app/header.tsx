@@ -107,7 +107,7 @@ export default function Header() {
             />
           </div>
           <h1 className="text-xl md:text-2xl font-cinzel tracking-wide group-hover:text-copper transition-colors">
-            La forge de <span className="text-copper">graba</span>
+            La forge de <span className="text-copper">Graba</span>
           </h1>
         </Link>
 

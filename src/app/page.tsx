@@ -297,7 +297,7 @@ export default function HomePage() {
 
         <h2 className="text-5xl font-cinzel mb-10 text-copper">Contact</h2>
         <p className="text-gray-300 mb-6">
-          Pour toute demande de création sur mesure ou de collaboration,
+          Pour toute demande d&apos;information, réservation de stage et autre,
           contactez-moi :
         </p>
         <OpenContactButton className="btn-primary text-white px-6 py-3 rounded-xl relative z-10">
