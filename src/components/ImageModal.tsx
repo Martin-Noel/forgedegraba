@@ -292,7 +292,7 @@ export default function ImageModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 md:p-6"
           onClick={() => setOpen(false)}
         >
           <motion.div
@@ -300,7 +300,7 @@ export default function ImageModal() {
             animate={{ scale: 1 }}
             exit={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="relative w-full max-w-[95vw] h-[85vh] max-h-[95vh]"
+            className="relative w-full h-full md:max-w-[95vw] md:h-[85vh] md:max-h-[95vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
