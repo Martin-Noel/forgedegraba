@@ -51,6 +51,7 @@ export default function StagesPage() {
               "@type": "Schedule",
               duration: "P1D",
               repeatFrequency: "Weekly",
+              repeatCount: 1,
             },
             instructor: {
               "@type": "Person",
@@ -86,6 +87,7 @@ export default function StagesPage() {
               "@type": "Schedule",
               duration: "P1D",
               repeatFrequency: "Weekly",
+              repeatCount: 1,
             },
           },
         },
@@ -117,6 +119,7 @@ export default function StagesPage() {
               "@type": "Schedule",
               duration: "P2D",
               repeatFrequency: "Weekly",
+              repeatCount: 1,
             },
           },
         },
