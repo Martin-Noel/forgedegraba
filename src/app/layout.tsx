@@ -7,9 +7,9 @@ import ImageModal from "../components/ImageModal";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "La forge de Graba | Couteaux artisanaux forgés à la main en Dordogne",
+  title: "La forge de Graba | Couteaux artisanaux en Dordogne",
   description:
-    "Couteaux de cuisine artisanaux forgés à la main en Dordogne. Lames en acier carbone, manches en bois stabilisé. Stages de coutellerie sur mesure. Artisan coutelier Valentin ADAM à Tursac.",
+    "Couteaux de cuisine forgés à la main en Dordogne. Aciers carbone, manches en bois stabilisé. Stages de coutellerie à Tursac.",
   metadataBase: new URL("https://www.laforgedegraba.com"),
   viewport: {
     width: "device-width",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "La forge de Graba | Couteaux artisanaux en Dordogne",
     description:
-      "Couteaux de cuisine artisanaux forgés à la main. Lames en acier carbone, manches en bois stabilisé. Stages de coutellerie à Tursac, Dordogne.",
+      "Couteaux de cuisine forgés à la main en Dordogne. Aciers carbone, manches en bois stabilisé. Stages de coutellerie à Tursac.",
     url: "https://www.laforgedegraba.com/",
     siteName: "La forge de Graba",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "La forge de Graba | Couteaux artisanaux en Dordogne",
     description:
-      "Couteaux de cuisine artisanaux forgés à la main. Stages de coutellerie à Tursac, Dordogne.",
+      "Couteaux de cuisine forgés à la main en Dordogne. Aciers carbone, manches en bois stabilisé. Stages de coutellerie à Tursac.",
     images: ["https://www.laforgedegraba.com/background/bg-main.jpg"],
   },
   keywords: [

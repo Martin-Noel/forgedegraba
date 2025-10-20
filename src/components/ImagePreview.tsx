@@ -5,7 +5,7 @@ import Image from "next/image";
 
 type Props = {
   src: string;
-  alt?: string;
+  alt: string;
   className?: string;
   rotate90?: boolean;
 };
@@ -45,7 +45,12 @@ export default function ImagePreview({
       />
       {/* hidden native img for gallery src discovery by ImageModal */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" aria-hidden="true" className="sr-only" />
+      <img
+        src={src}
+        alt={alt || "Création artisanale"}
+        aria-hidden="true"
+        className="sr-only"
+      />
     </button>
   );
 }
