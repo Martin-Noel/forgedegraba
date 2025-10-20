@@ -116,7 +116,11 @@ export default function RootLayout({
       "@type": "Person",
       name: "Valentin ADAM",
     },
-    sameAs: [],
+    sameAs: [
+      "https://www.instagram.com/grabaistos/",
+      "https://www.facebook.com/p/Graba%C3%AFstos-100071274200419/",
+      "https://www.threads.com/@grabaistos?xmt=AQF0Sjb68iko5e4sI8_UDWVNym6LDC_X8mCY-pIdkmNnzlM",
+    ],
   };
 
   return (
@@ -136,12 +140,20 @@ export default function RootLayout({
         <footer className="mt-20 py-10 text-center text-sm text-steel">
           © {new Date().getFullYear()} La forge de{" "}
           <span className="text-copper">Graba</span> — Tous droits réservés.
-          <div className="mt-2">
+          <div className="mt-2 flex items-center justify-center gap-4">
             <a
               href="/mentions-legales"
               className="underline text-steel hover:text-white"
             >
               Mentions légales
+            </a>
+            <a
+              href="tel:+33627899593"
+              aria-label="Appeler au 06 27 89 95 93"
+              className="underline text-copper hover:text-white"
+            >
+              <span className="sr-only">Téléphone:&nbsp;</span>
+              <span className="whitespace-nowrap">06 27 89 95 93</span>
             </a>
           </div>
         </footer>

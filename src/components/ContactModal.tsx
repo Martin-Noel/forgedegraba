@@ -182,6 +182,15 @@ export default function ContactModal() {
         <p className="text-sm text-gray-300 mb-2">
           Envoyez votre demande, je vous répondrai rapidement.
         </p>
+        <p className="text-sm text-gray-300 mb-4">
+          Ou appelez directement au
+          <a
+            href="tel:+33627899593"
+            className="ml-1 font-medium text-copper hover:underline focus:outline-none focus:ring-2 focus:ring-copper/60 rounded"
+          >
+            06 27 89 95 93
+          </a>
+        </p>
 
         <form onSubmit={submit} className="space-y-3">
           <input
