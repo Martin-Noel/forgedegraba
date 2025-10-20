@@ -112,7 +112,7 @@ function CarouselControls({ selector }: { selector: string }) {
 export default function HomePage() {
   const { scrollY } = useScroll();
 
-  // Parallaxe pour les sections
+  // Parallaxe pour les filigranes SEULEMENT (pas le hero)
   const yStampSavoir = useTransform(scrollY, [0, 500], [0, 0]);
   const yStampContact = useTransform(scrollY, [0, 500], [0, 0]);
 
@@ -122,11 +122,8 @@ export default function HomePage() {
     <>
       {/* HERO SECTION */}
       <section className="relative h-screen w-full overflow-hidden" id="hero">
-        {/* Background principal avec parallaxe */}
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: useTransform(scrollY, [0, 500], [0, -50]) }}
-        >
+        {/* Background principal SANS parallaxe */}
+        <div className="absolute inset-0">
           <Image
             src="/background/bg-main.jpg"
             alt="Forgeron à l'œuvre"
@@ -135,7 +132,7 @@ export default function HomePage() {
             className="object-cover brightness-[1]"
             style={{ objectPosition: "center 35%" }}
           />
-        </motion.div>
+        </div>
 
         {/* Overlay gradient for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
