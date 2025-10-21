@@ -167,6 +167,17 @@ export default function RootLayout({
               <span className="whitespace-nowrap">06 27 89 95 93</span>
             </a>
           </div>
+          <div className="mt-2 text-xs text-steel/80">
+            Site par{" "}
+            <a
+              href="https://github.com/Martin-Noel"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="underline hover:text-white"
+            >
+              NOËL Martin
+            </a>
+          </div>
         </footer>
       </body>
     </html>

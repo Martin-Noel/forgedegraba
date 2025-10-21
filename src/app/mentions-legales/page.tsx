@@ -116,8 +116,32 @@ export default function MentionsLegales() {
               Crédits photographiques
             </h2>
             <p className="leading-relaxed text-sm text-gray-300">
-              Photo principale (hero) : Raphael Hinojosa Photos des créations /
-              couteaux : Valentin Adam
+              Photo principale (hero) : Raphaël Hinojosa
+            </p>
+            <p className="leading-relaxed text-sm text-gray-300">
+              Photos des créations / couteaux : Valentin Adam
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-2 text-copper">
+              Crédits — Conception et développement
+            </h2>
+            <p className="leading-relaxed text-sm text-gray-300">
+              Conception et développement :{" "}
+              <span className="font-medium">NOËL Martin</span> —{" "}
+              <a
+                href="https://github.com/Martin-Noel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                github.com/Martin-Noel
+              </a>{" "}
+              —{" "}
+              <a href="mailto:martin.noel.dev@gmail.com" className="underline">
+                martin.noel.dev@gmail.com
+              </a>
             </p>
           </section>
         </div>
