@@ -124,14 +124,14 @@ export default function ContactModal() {
       emailjs.init(EMAILJS_PUBLIC_KEY);
       type TemplateParams = {
         subject: string;
-        from_name: string;
-        reply_to: string;
+        user_name: string;
+        user_email: string;
         message: string;
       };
       const templateParams: TemplateParams = {
         subject: subject || "Demande depuis le site",
-        from_name: name || "",
-        reply_to: email || "",
+        user_name: name || "",
+        user_email: email || "",
         message: message,
       };
       // service, template, params
