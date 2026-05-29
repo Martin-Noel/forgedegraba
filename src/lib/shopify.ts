@@ -56,7 +56,7 @@ export async function getProducts(options?: {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": TOKEN,
+      "Shopify-Storefront-Access-Token": TOKEN,
     },
     body: JSON.stringify({
       query: PRODUCTS_QUERY,
