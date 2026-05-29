@@ -31,50 +31,22 @@ export default function ImageModal() {
     const detail = (e as CustomEvent).detail || {};
     const s = detail.src || null;
     const a = detail.alt || null;
-    const rFromEvent: boolean = !!detail.rotate90;
+    const galleryItems: { src: string; alt: string; rotate90?: boolean }[] = detail.gallery ?? [];
+    const imgs = galleryItems.map((g) => g.src);
+    const rotates = galleryItems.map((g) => !!g.rotate90);
+    const idx: number | null =
+      galleryItems.length > 0
+        ? typeof detail.galleryIndex === "number"
+          ? detail.galleryIndex
+          : imgs.indexOf(s)
+        : null;
 
-    // Prefer hidden native imgs (sr-only) we add in previews so we get original public paths
-    let nodeList = Array.from(
-      document.querySelectorAll<HTMLImageElement>(".creation-card img.sr-only")
-    );
-    if (nodeList.length === 0) {
-      // fallback to any img under creation-card (may be Next/Image optimized URL)
-      nodeList = Array.from(
-        document.querySelectorAll<HTMLImageElement>(".creation-card img")
-      );
-    }
-    const imgs = nodeList.map((i) => i.src).filter(Boolean);
-    const rotates = nodeList.map((i) => {
-      // If it's the hidden img we added, infer rotation from its closest button wrapper
-      if (i.classList.contains("sr-only")) {
-        const btn = i.closest("button");
-        return btn?.classList.contains("rotate-knife") || false;
-      }
-      // Otherwise infer from the image class directly
-      return i.classList.contains("rotated-90");
-    });
-
-    let idx: number | null = null;
-    if (s && imgs.length > 0) {
-      idx = imgs.indexOf(s);
-      if (idx === -1) idx = null;
-    }
-
-    if (imgs.length > 0) {
-      setGallery(imgs);
-      setGalleryRotate(rotates);
-    } else {
-      setGallery([]);
-      setGalleryRotate([]);
-    }
-
+    setGallery(imgs);
+    setGalleryRotate(rotates);
     setSrc(s);
     setAlt(a);
-    setIndex(idx);
-    // Prefer rotation inferred from gallery index; fall back to event detail
-    if (idx != null && rotates[idx] != null) setRotate90(!!rotates[idx]);
-    else setRotate90(rFromEvent);
-    // reset zoom/pan when opening
+    setIndex(idx != null && idx >= 0 ? idx : null);
+    setRotate90(idx != null && idx >= 0 ? !!rotates[idx] : !!detail.rotate90);
     setScale(1);
     setPan({ x: 0, y: 0 });
     setOpen(true);
@@ -319,7 +291,7 @@ export default function ImageModal() {
                     e.stopPropagation();
                     showPrev();
                   }}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20 cursor-pointer"
                 >
                   ‹
                 </button>
@@ -329,7 +301,7 @@ export default function ImageModal() {
                     e.stopPropagation();
                     showNext();
                   }}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20 cursor-pointer"
                 >
                   ›
                 </button>
