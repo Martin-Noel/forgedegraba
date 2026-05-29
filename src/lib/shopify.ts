@@ -1,3 +1,5 @@
+import "server-only";
+
 const DOMAIN = (process.env.SHOPIFY_DOMAIN ?? "")
   .replace(/^https?:\/\//, "")
   .replace(/\/$/, "");
@@ -50,9 +52,9 @@ export async function getProducts(options?: {
 }): Promise<ShopifyProduct[]> {
   const { first = 20, tag, revalidate = 3600 } = options ?? {};
 
-  if (!DOMAIN || !TOKEN || TOKEN === "xxxxxxx") return [];
+  if (!DOMAIN || !TOKEN) return [];
 
-  const res = await fetch(`https://${DOMAIN}/api/2024-01/graphql.json`, {
+  const res = await fetch(`https://${DOMAIN}/api/2025-01/graphql.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

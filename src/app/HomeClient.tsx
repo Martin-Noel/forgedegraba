@@ -4,7 +4,7 @@ import Image from "next/image";
 import OpenContactButton from "@/components/OpenContactButton";
 import ImagePreview from "@/components/ImagePreview";
 import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useMemo } from "react";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 function CarouselControls({ selector }: { selector: string }) {
@@ -59,6 +59,8 @@ function CarouselControls({ selector }: { selector: string }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable) return;
       if (e.key === "ArrowLeft") scrollToCard(-1);
       else if (e.key === "ArrowRight") scrollToCard(1);
     };
@@ -92,9 +94,17 @@ type Props = {
 
 export default function HomeClient({ featuredProducts }: Props) {
   const { scrollY } = useScroll();
-  const yStampSavoir = useTransform(scrollY, [0, 500], [0, 0]);
-  const yStampContact = useTransform(scrollY, [0, 500], [0, 0]);
+  const yStampSavoir = useTransform(scrollY, [0, 600], [0, -60]);
+  const yStampContact = useTransform(scrollY, [0, 1200], [0, -40]);
   const stamp_white = "/stamps/stamp_white.png";
+
+  const featuredGallery = useMemo(
+    () =>
+      featuredProducts
+        .filter((p) => p.featuredImage)
+        .map((p) => ({ src: p.featuredImage!.url, alt: p.featuredImage!.altText ?? p.title, rotate90: true })),
+    [featuredProducts]
+  );
 
   return (
     <>
@@ -229,6 +239,8 @@ export default function HomeClient({ featuredProducts }: Props) {
                       src={p.featuredImage.url}
                       alt={p.featuredImage.altText ?? p.title}
                       rotate90
+                      gallery={featuredGallery}
+                      galleryIndex={featuredGallery.findIndex((g) => g.src === p.featuredImage!.url)}
                     />
                   </div>
                 )}

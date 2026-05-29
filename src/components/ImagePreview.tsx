@@ -3,9 +3,13 @@
 import React from "react";
 import Image from "next/image";
 
+export type GalleryItem = { src: string; alt: string; rotate90?: boolean };
+
 type Props = {
   src: string;
   alt: string;
+  gallery?: GalleryItem[];
+  galleryIndex?: number;
   className?: string;
   rotate90?: boolean;
 };
@@ -13,12 +17,16 @@ type Props = {
 export default function ImagePreview({
   src,
   alt = "",
+  gallery,
+  galleryIndex,
   className = "",
   rotate90 = false,
 }: Props) {
   const open = () => {
     window.dispatchEvent(
-      new CustomEvent("open-image", { detail: { src, alt, rotate90 } })
+      new CustomEvent("open-image", {
+        detail: { src, alt, rotate90, gallery: gallery ?? [], galleryIndex: galleryIndex ?? 0 },
+      })
     );
   };
 
@@ -42,14 +50,6 @@ export default function ImagePreview({
         fill
         sizes="(max-width: 639px) 72vw, 33vw"
         className={`object-contain ${rotate90 ? "rotated-90" : ""}`}
-      />
-      {/* hidden native img for gallery src discovery by ImageModal */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt || "Création artisanale"}
-        aria-hidden="true"
-        className="sr-only"
       />
     </button>
   );

@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 
 export default async function CreationsPage() {
   const products = await getProducts({ first: 50 });
+  const gallery = products
+    .filter((p) => p.featuredImage)
+    .map((p) => ({ src: p.featuredImage!.url, alt: p.featuredImage!.altText ?? p.title, rotate90: true }));
 
   const productsJsonLd = {
     "@context": "https://schema.org",
@@ -42,7 +45,7 @@ export default async function CreationsPage() {
   };
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24" style={{ scrollMarginTop: 80 }}>
+    <main className="max-w-6xl mx-auto px-6 py-24 scroll-mt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
@@ -70,6 +73,8 @@ export default async function CreationsPage() {
                     src={p.featuredImage.url}
                     alt={p.featuredImage.altText ?? p.title}
                     rotate90
+                    gallery={gallery}
+                    galleryIndex={gallery.findIndex((g) => g.src === p.featuredImage!.url)}
                   />
                 </div>
               )}
@@ -94,6 +99,7 @@ export default async function CreationsPage() {
                       href={productCheckoutUrl(p)}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-disabled={!p.availableForSale}
                       className={`btn-primary${!p.availableForSale ? " opacity-50 pointer-events-none" : ""}`}
                     >
                       {p.availableForSale ? "Acheter" : "Indisponible"}
