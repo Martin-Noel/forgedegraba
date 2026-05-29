@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CreationsPage() {
-  const products = await getProducts({ first: 50 });
+  const products = (await getProducts({ first: 50 })).filter((p) => p.availableForSale);
   const gallery = products
     .filter((p) => p.featuredImage)
     .map((p) => ({ src: p.featuredImage!.url, alt: p.featuredImage!.altText ?? p.title, rotate90: true }));

@@ -291,7 +291,7 @@ export default function ImageModal() {
                     e.stopPropagation();
                     showPrev();
                   }}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20 cursor-pointer"
                 >
                   ‹
                 </button>
@@ -301,7 +301,7 @@ export default function ImageModal() {
                     e.stopPropagation();
                     showNext();
                   }}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/40 rounded-full p-2 z-20 cursor-pointer"
                 >
                   ›
                 </button>
